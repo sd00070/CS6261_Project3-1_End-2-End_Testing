@@ -32,4 +32,20 @@ describe('Routing', () => {
 
         expect(subpageTitle.getText()).toContain("Brackets")
     })
+
+    it('can navigate to the welcome page from another page', () => {
+        browser.get('/')
+
+        const bracketsLink = element(by.id('brackets-link'))
+
+        bracketsLink.click()
+
+        const welcomeLink = element(by.id('welcome-link'))
+
+        welcomeLink.click()
+
+        const subpageTitle = element(by.id('subpageTitle'))
+
+        expect(subpageTitle.getText()).toContain("Brackets App")
+    })
 })
