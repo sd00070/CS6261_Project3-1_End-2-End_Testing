@@ -20,4 +20,16 @@ describe('Routing', () => {
 
         expect(subpageTitle.getText()).toContain("Register Players")
     })
+
+    it('can navigate to the brackets page', () => {
+        browser.get('/')
+
+        const bracketsLink = element(by.id('brackets-link'))
+
+        bracketsLink.click()
+
+        const subpageTitle = element(by.id('subpageTitle'))
+
+        expect(subpageTitle.getText()).toContain("Brackets")
+    })
 })
