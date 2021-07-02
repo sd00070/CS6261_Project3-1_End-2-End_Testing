@@ -1,10 +1,5 @@
-import { browser, by, element } from "protractor"
-
-const navigateToRegistration = () => {
-    browser.get('/')
-
-    element(by.id('registration-link')).click()
-}
+import { by, element } from "protractor"
+import { navigateToRegistration } from "../util/navigation-shorthand"
 
 const getMessageText = () => element(by.id('message')).getText()
 
