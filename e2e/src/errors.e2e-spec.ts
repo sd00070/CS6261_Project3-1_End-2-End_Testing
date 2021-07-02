@@ -70,8 +70,23 @@ describe('errors', () => {
             expect(message.getText()).toContain('Should be 2, 4, or 8 contestants')
         })
 
-        xit('displays an error when 6 players are submitted', () => {
+        it('displays an error when 6 players are submitted', () => {
+            navigateToRegistration()
 
+            const contestantTextInputs = element.all(by.className('contestant-text-input'))
+
+            contestantTextInputs.get(0).sendKeys('Ulrich')
+            contestantTextInputs.get(1).sendKeys('Yumi')
+            contestantTextInputs.get(2).sendKeys('Jeremie')
+            contestantTextInputs.get(3).sendKeys('Odd')
+            contestantTextInputs.get(4).sendKeys('Aelita')
+            contestantTextInputs.get(5).sendKeys('William')
+
+            clickRegisterButton()
+
+            const message = element(by.id('message'))
+
+            expect(message.getText()).toContain('Should be 2, 4, or 8 contestants')
         })
 
         xit('displays an error when 7 players are submitted', () => {
