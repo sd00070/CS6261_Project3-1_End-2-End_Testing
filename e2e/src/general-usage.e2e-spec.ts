@@ -1,4 +1,8 @@
 describe('registering players', () => {
+    xit('clears the text inputs when returning to registration page', () => {
+
+    })
+
     xit('registers 2 players & displays them in a message', () => {
 
     })
