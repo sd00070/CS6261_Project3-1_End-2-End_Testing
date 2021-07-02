@@ -1,13 +1,14 @@
 import { browser, by, element } from "protractor"
 
-const navigateToRegistration = () => {
-    browser.get('/')
-
-    element(by.id('registration-link')).click()
-}
-
 describe('errors', () => {
+
     describe('registration page', () => {
+
+        const navigateToRegistration = () => {
+            browser.get('/')
+
+            element(by.id('registration-link')).click()
+        }
 
         const clickRegisterButton = () => element(by.id('register-contestants-button')).click()
 
