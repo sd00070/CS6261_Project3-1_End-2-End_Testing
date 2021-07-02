@@ -1,8 +1,12 @@
 import { browser, by, element } from "protractor"
 
+const getMessageText = () => element(by.id('message')).getText()
+
 describe('errors', () => {
 
     describe('registration page', () => {
+
+        const contestantNumberError = 'Should be 2, 4, or 8 contestants'
 
         const navigateToRegistration = () => {
             browser.get('/')
@@ -12,14 +16,14 @@ describe('errors', () => {
 
         const clickRegisterButton = () => element(by.id('register-contestants-button')).click()
 
+        const getContestantTextInputs = () => element.all(by.className('contestant-text-input'))
+
         it('displays error when no contestants filled on submit', () => {
             navigateToRegistration()
 
             clickRegisterButton()
 
-            const message = element(by.id('message'))
-
-            expect(message.getText()).toContain('Should be 2, 4, or 8 contestants')
+            expect(getMessageText()).toContain(contestantNumberError)
         })
 
         it('displays an error when 1 player is submitted', () => {
@@ -31,15 +35,13 @@ describe('errors', () => {
 
             clickRegisterButton()
 
-            const message = element(by.id('message'))
-
-            expect(message.getText()).toContain('Should be 2, 4, or 8 contestants')
+            expect(getMessageText()).toContain('Should be 2, 4, or 8 contestants')
         })
 
         it('displays an error when 3 players are submitted', () => {
             navigateToRegistration()
 
-            const contestantTextInputs = element.all(by.className('contestant-text-input'))
+            const contestantTextInputs = getContestantTextInputs()
 
             contestantTextInputs.get(0).sendKeys('Ed')
             contestantTextInputs.get(2).sendKeys('Edd')
@@ -47,15 +49,13 @@ describe('errors', () => {
 
             clickRegisterButton()
 
-            const message = element(by.id('message'))
-
-            expect(message.getText()).toContain('Should be 2, 4, or 8 contestants')
+            expect(getMessageText()).toContain(contestantNumberError)
         })
 
         it('displays an error when 5 players are submitted', () => {
             navigateToRegistration()
 
-            const contestantTextInputs = element.all(by.className('contestant-text-input'))
+            const contestantTextInputs = getContestantTextInputs()
 
             contestantTextInputs.get(0).sendKeys('Beast Boy')
             contestantTextInputs.get(1).sendKeys('Cyborg')
@@ -65,15 +65,13 @@ describe('errors', () => {
 
             clickRegisterButton()
 
-            const message = element(by.id('message'))
-
-            expect(message.getText()).toContain('Should be 2, 4, or 8 contestants')
+            expect(getMessageText()).toContain(contestantNumberError)
         })
 
         it('displays an error when 6 players are submitted', () => {
             navigateToRegistration()
 
-            const contestantTextInputs = element.all(by.className('contestant-text-input'))
+            const contestantTextInputs = getContestantTextInputs()
 
             contestantTextInputs.get(0).sendKeys('Ulrich')
             contestantTextInputs.get(1).sendKeys('Yumi')
@@ -84,9 +82,7 @@ describe('errors', () => {
 
             clickRegisterButton()
 
-            const message = element(by.id('message'))
-
-            expect(message.getText()).toContain('Should be 2, 4, or 8 contestants')
+            expect(getMessageText()).toContain(contestantNumberError)
         })
 
         xit('displays an error when 7 players are submitted', () => {
