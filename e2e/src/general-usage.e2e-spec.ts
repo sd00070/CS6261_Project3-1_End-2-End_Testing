@@ -62,8 +62,18 @@ describe('registering players', () => {
         expect(matches.count()).toBe(2)
     })
 
-    xit('displays 4 matches on the brackets page after registering 8 players', () => {
+    it('displays 4 matches on the brackets page after registering 8 players', () => {
+        navigateToRegistration()
 
+        sendContestantTextInputs('Snow White', 'Sleepy', 'Sneezy', 'Bashful', 'Doc', 'Dopey', 'Grumpy', 'Happy')
+
+        clickRegisterButton()
+
+        element(by.id('brackets-link')).click()
+
+        const matches = element.all(by.className('match-heading'))
+
+        expect(matches.count()).toBe(4)
     })
 
     xit('auto-generates 2 players & registers them', () => {
