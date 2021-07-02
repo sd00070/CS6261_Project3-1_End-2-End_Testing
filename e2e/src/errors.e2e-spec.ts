@@ -80,8 +80,14 @@ describe('errors', () => {
             expect(getMessageText()).toContain(contestantNumberError)
         })
 
-        xit('displays an error when given duplicate names', () => {
+        it('displays an error when given duplicate names', () => {
+            navigateToRegistration()
 
+            sendContestantTextInputs('Daryl', 'Daryl')
+
+            clickRegisterButton()
+
+            expect(getMessageText()).toContain('Duplicate player')
         })
     })
 
