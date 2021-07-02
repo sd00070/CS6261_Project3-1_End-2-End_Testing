@@ -43,11 +43,7 @@ describe('errors', () => {
         it('displays an error when 3 players are submitted', () => {
             navigateToRegistration()
 
-            sendContestantTextInputs(
-                'Ed',
-                'Edd',
-                'Eddy'
-            )
+            sendContestantTextInputs('Ed', 'Edd', 'Eddy')
 
             clickRegisterButton()
 
