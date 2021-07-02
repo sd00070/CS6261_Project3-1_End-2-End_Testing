@@ -20,8 +20,20 @@ describe('errors', () => {
             expect(message.getText()).toContain('Should be 2, 4, or 8 contestants')
         })
 
-        xit('displays an error when 1 player is submitted', () => {
+        it('displays an error when 1 player is submitted', () => {
+            navigateToRegistration()
 
+            const contestantTextInput = element(by.id('contestant0'))
+
+            contestantTextInput.sendKeys('Samurai Jack')
+
+            const registerContestantsButton = element(by.id('register-contestants-button'))
+
+            registerContestantsButton.click()
+
+            const message = element(by.id('message'))
+
+            expect(message.getText()).toContain('Should be 2, 4, or 8 contestants')
         })
 
         it('displays an error when 3 players are submitted', () => {
