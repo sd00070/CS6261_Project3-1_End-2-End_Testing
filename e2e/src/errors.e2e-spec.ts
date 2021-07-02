@@ -1,5 +1,11 @@
 import { browser, by, element } from "protractor"
 
+const navigateToRegistration = () => {
+    browser.get('/')
+
+    element(by.id('registration-link')).click()
+}
+
 const getMessageText = () => element(by.id('message')).getText()
 
 describe('errors', () => {
@@ -7,12 +13,6 @@ describe('errors', () => {
     describe('registration page', () => {
 
         const contestantNumberError = 'Should be 2, 4, or 8 contestants'
-
-        const navigateToRegistration = () => {
-            browser.get('/')
-
-            element(by.id('registration-link')).click()
-        }
 
         const clickRegisterButton = () => element(by.id('register-contestants-button')).click()
 
