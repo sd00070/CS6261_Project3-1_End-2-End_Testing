@@ -76,6 +76,18 @@ describe('registering players', () => {
         expect(matches.count()).toBe(4)
     })
 
+    xit('displays the 2 registered players in the brackets', () => {
+
+    })
+
+    xit('displays the 4 registered players in teh brackets', () => {
+
+    })
+
+    xit('displays the 8 registered players in the brackets', () => {
+
+    })
+
     xit('auto-generates 2 players & registers them', () => {
 
     })
