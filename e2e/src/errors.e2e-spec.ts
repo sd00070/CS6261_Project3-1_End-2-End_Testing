@@ -1,7 +1,19 @@
+import { browser, by, element } from "protractor"
+
 describe('errors', () => {
     describe('registration page', () => {
-        xit('displays error when no contestants filled on submit', () => {
+        it('displays error when no contestants filled on submit', () => {
+            browser.get('/')
 
+            element(by.id('registration-link')).click()
+
+            const registerContestantsButton = element(by.id('register-contestants-button'))
+
+            registerContestantsButton.click()
+
+            const message = element(by.id('message'))
+
+            expect(message.getText()).toContain('Should be 2, 4, or 8 contestants')
         })
 
         xit('displays an error when 1, 3, or 5-7 players are submitted', () => {

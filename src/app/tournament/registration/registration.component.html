@@ -1,6 +1,6 @@
 <h2 id="subpageTitle">Register Players</h2>
 
-<div>{{message}}</div>
+<div id="message">{{message}}</div>
 
 <form (ngSubmit)="registerContestants()">
   <div *ngFor="let player of players; index as i; trackBy:trackByFn">
@@ -8,7 +8,7 @@
       [(ngModel)]="players[i]">
   </div>
 
-  <button type="submit">Register Contestants</button>
+  <button type="submit" id="register-contestants-button">Register Contestants</button>
 </form>
 
 <button type='button' (click)="autofillTwoPlayers()">Autofill 2 Players</button>
