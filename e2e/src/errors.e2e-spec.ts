@@ -1,8 +1,6 @@
+import { getMessageText } from "../util/elements"
 import { sendContestantTextInputs, clickRegisterButton } from "../util/form-interaction"
-import { by, element } from "protractor"
 import { navigateToRegistration } from "../util/navigation"
-
-const getMessageText = () => element(by.id('message')).getText()
 
 describe('errors', () => {
 
