@@ -1,11 +1,15 @@
 import { browser, by, element } from "protractor"
 
+const navigateToRegistration = () => {
+    browser.get('/')
+
+    element(by.id('registration-link')).click()
+}
+
 describe('errors', () => {
     describe('registration page', () => {
         it('displays error when no contestants filled on submit', () => {
-            browser.get('/')
-
-            element(by.id('registration-link')).click()
+            navigateToRegistration()
 
             const registerContestantsButton = element(by.id('register-contestants-button'))
 
@@ -21,9 +25,7 @@ describe('errors', () => {
         })
 
         it('displays an error when 3 players are submitted', () => {
-            browser.get('/')
-
-            element(by.id('registration-link')).click()
+            navigateToRegistration()
 
             const contestantTextInputs = new Array(3).fill('').map((_, index) => element(by.id(`contestant${index}`)))
 
