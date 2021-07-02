@@ -1,6 +1,6 @@
 import { sendContestantTextInputs } from "../util/form-interaction"
 import { by, element } from "protractor"
-import { navigateToRegistration } from "../util/navigation-shorthand"
+import { navigateToRegistration } from "../util/navigation"
 
 const getMessageText = () => element(by.id('message')).getText()
 
