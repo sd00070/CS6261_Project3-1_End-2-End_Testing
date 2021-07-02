@@ -70,8 +70,14 @@ describe('errors', () => {
             expect(getMessageText()).toContain(contestantNumberError)
         })
 
-        xit('displays an error when 7 players are submitted', () => {
+        it('displays an error when 7 players are submitted', () => {
+            navigateToRegistration()
 
+            sendContestantTextInputs('SpongeBob', 'Patrick', 'Squidward', 'Mr. Krabs', 'Plankton', 'Gary', 'Sandy')
+
+            clickRegisterButton()
+
+            expect(getMessageText()).toContain(contestantNumberError)
         })
 
         xit('displays an error when given duplicate names', () => {
