@@ -5,3 +5,5 @@ export const sendContestantTextInputs = (...inputs: string[]): void => {
 
     inputs.forEach((value: string, index: number) => contestantTextInputs.get(index).sendKeys(value))
 }
+
+export const clickRegisterButton = () => element(by.id('register-contestants-button')).click()
