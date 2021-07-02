@@ -13,10 +13,6 @@ describe('registering players', () => {
         expect(getMessageText()).toContain('Yogi,Booboo')
     })
 
-    xit('clears the text inputs when returning to registration page', () => {
-
-    })
-
     xit('registers 4 players & displays them in a message', () => {
 
     })
@@ -46,6 +42,10 @@ describe('registering players', () => {
     })
 
     xit('auto-generates 8 players & registers them', () => {
+
+    })
+
+    xit('clears the text inputs when returning to registration page', () => {
 
     })
 })
