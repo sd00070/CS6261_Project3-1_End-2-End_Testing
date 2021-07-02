@@ -1,9 +1,19 @@
-describe('registering players', () => {
-    xit('clears the text inputs when returning to registration page', () => {
+import { getMessageText } from "../util/elements"
+import { clickRegisterButton, sendContestantTextInputs } from "../util/form-interaction"
+import { navigateToRegistration } from "../util/navigation"
 
+describe('registering players', () => {
+    it('registers 2 players & displays them in a message', () => {
+        navigateToRegistration()
+
+        sendContestantTextInputs('Yogi', 'Booboo')
+
+        clickRegisterButton()
+
+        expect(getMessageText()).toContain('Yogi,Booboo')
     })
 
-    xit('registers 2 players & displays them in a message', () => {
+    xit('clears the text inputs when returning to registration page', () => {
 
     })
 
