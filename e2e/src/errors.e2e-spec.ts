@@ -1,3 +1,4 @@
+import { sendContestantTextInputs } from "../util/form-interaction"
 import { by, element } from "protractor"
 import { navigateToRegistration } from "../util/navigation-shorthand"
 
@@ -10,12 +11,6 @@ describe('errors', () => {
         const contestantNumberError = 'Should be 2, 4, or 8 contestants'
 
         const clickRegisterButton = () => element(by.id('register-contestants-button')).click()
-
-        const sendContestantTextInputs = (...inputs: string[]): void => {
-            const contestantTextInputs = element.all(by.className('contestant-text-input'))
-
-            inputs.forEach((value: string, index: number) => contestantTextInputs.get(index).sendKeys(value))
-        }
 
         it('displays error when no contestants filled on submit', () => {
             navigateToRegistration()
