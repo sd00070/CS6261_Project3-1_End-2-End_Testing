@@ -23,8 +23,14 @@ describe('registering players', () => {
         expect(getMessageText()).toContain('Mario,Luigi,Peach,Toad')
     })
 
-    xit('registers 8 players & displays them in a message', () => {
+    it('registers 8 players & displays them in a message', () => {
+        navigateToRegistration()
 
+        sendContestantTextInputs('Frodo', 'Sam', 'Aragorn', 'Boromir', 'Legalos', 'Gimli', 'Merry', 'Pippin')
+
+        clickRegisterButton()
+
+        expect(getMessageText()).toContain('Frodo,Sam,Aragorn,Boromir,Legalos,Gimli,Merry,Pippin')
     })
 
     xit('displays 1 match on the brackets page after registering 2 players', () => {
