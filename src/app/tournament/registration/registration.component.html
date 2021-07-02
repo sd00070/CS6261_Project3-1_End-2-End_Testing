@@ -5,7 +5,7 @@
 <form (ngSubmit)="registerContestants()">
   <div *ngFor="let player of players; index as i; trackBy:trackByFn">
     <input [id]="'contestant'+i" type="text" [placeholder]="'Contestant ' +i" [name]="'Contestant '+i"
-      [(ngModel)]="players[i]">
+      [(ngModel)]="players[i]" class="contestant-text-input">
   </div>
 
   <button type="submit" id="register-contestants-button">Register Contestants</button>

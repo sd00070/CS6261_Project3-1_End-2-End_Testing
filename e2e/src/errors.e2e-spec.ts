@@ -39,11 +39,11 @@ describe('errors', () => {
         it('displays an error when 3 players are submitted', () => {
             navigateToRegistration()
 
-            const contestantTextInputs = new Array(3).fill('').map((_, index) => element(by.id(`contestant${index}`)))
+            const contestantTextInputs = element.all(by.className('contestant-text-input'))
 
-            contestantTextInputs[0].sendKeys('Ed')
-            contestantTextInputs[1].sendKeys('Edd')
-            contestantTextInputs[2].sendKeys('Eddy')
+            contestantTextInputs.get(0).sendKeys('Ed')
+            contestantTextInputs.get(2).sendKeys('Edd')
+            contestantTextInputs.get(3).sendKeys('Eddy')
 
             clickRegisterButton()
 
