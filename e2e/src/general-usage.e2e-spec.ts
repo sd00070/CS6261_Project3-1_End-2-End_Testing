@@ -13,8 +13,14 @@ describe('registering players', () => {
         expect(getMessageText()).toContain('Yogi,Booboo')
     })
 
-    xit('registers 4 players & displays them in a message', () => {
+    it('registers 4 players & displays them in a message', () => {
+        navigateToRegistration()
 
+        sendContestantTextInputs('Mario', 'Luigi', 'Peach', 'Toad')
+
+        clickRegisterButton()
+
+        expect(getMessageText()).toContain('Mario,Luigi,Peach,Toad')
     })
 
     xit('registers 8 players & displays them in a message', () => {
