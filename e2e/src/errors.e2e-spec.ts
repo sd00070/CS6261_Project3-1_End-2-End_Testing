@@ -8,12 +8,13 @@ const navigateToRegistration = () => {
 
 describe('errors', () => {
     describe('registration page', () => {
+
+        const clickRegisterButton = () => element(by.id('register-contestants-button')).click()
+
         it('displays error when no contestants filled on submit', () => {
             navigateToRegistration()
 
-            const registerContestantsButton = element(by.id('register-contestants-button'))
-
-            registerContestantsButton.click()
+            clickRegisterButton()
 
             const message = element(by.id('message'))
 
@@ -27,9 +28,7 @@ describe('errors', () => {
 
             contestantTextInput.sendKeys('Samurai Jack')
 
-            const registerContestantsButton = element(by.id('register-contestants-button'))
-
-            registerContestantsButton.click()
+            clickRegisterButton()
 
             const message = element(by.id('message'))
 
@@ -45,9 +44,7 @@ describe('errors', () => {
             contestantTextInputs[1].sendKeys('Edd')
             contestantTextInputs[2].sendKeys('Eddy')
 
-            const registerContestantsButton = element(by.id('register-contestants-button'))
-
-            registerContestantsButton.click()
+            clickRegisterButton()
 
             const message = element(by.id('message'))
 
