@@ -1,3 +1,4 @@
+import { by, element } from "protractor"
 import { getMessageText } from "../util/elements"
 import { clickRegisterButton, sendContestantTextInputs } from "../util/form-interaction"
 import { navigateToRegistration } from "../util/navigation"
@@ -33,8 +34,18 @@ describe('registering players', () => {
         expect(getMessageText()).toContain('Frodo,Sam,Aragorn,Boromir,Legalos,Gimli,Merry,Pippin')
     })
 
-    xit('displays 1 match on the brackets page after registering 2 players', () => {
+    it('displays 1 match on the brackets page after registering 2 players', () => {
+        navigateToRegistration()
 
+        sendContestantTextInputs('Mac', 'Bloo')
+
+        clickRegisterButton()
+
+        element(by.id('brackets-link')).click()
+
+        const matches = element.all(by.className('match-heading'))
+
+        expect(matches.count()).toBe(1)
     })
 
     xit('displays 2 matches on the brackets page after registering 4 players', () => {
