@@ -106,8 +106,15 @@ describe('registration button', () => {
 })
 
 describe('autofill buttons', () => {
-    xit('displays 2 players in the text input fields', () => {
+    it('displays 2 players in the text input fields', () => {
+        navigateToRegistration()
 
+        element(by.id('autofill-2-players-button')).click()
+
+        const contestantTextInputs = element.all(by.className('contestant-text-input'))
+
+        expect(contestantTextInputs.get(0).getAttribute('value')).toEqual('Zoe')
+        expect(contestantTextInputs.get(1).getAttribute('value')).toEqual('Kaylee')
     })
 
     xit('displays 4 players in the text input fields', () => {
