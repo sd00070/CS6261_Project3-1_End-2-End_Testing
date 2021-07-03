@@ -3,7 +3,7 @@ import { getMessageText } from "../util/elements"
 import { clickRegisterButton, sendContestantTextInputs } from "../util/form-interaction"
 import { navigateToRegistration } from "../util/navigation"
 
-describe('registering players', () => {
+describe('registration button', () => {
     it('registers 2 players & displays them in a message', () => {
         navigateToRegistration()
 
@@ -100,19 +100,25 @@ describe('registering players', () => {
 
     })
 
-    xit('auto-generates 2 players & registers them', () => {
-
-    })
-
-    xit('auto-generates 4 players & registers them', () => {
-
-    })
-
-    xit('auto-generates 8 players & registers them', () => {
-
-    })
-
     xit('clears the text inputs when returning to registration page', () => {
+
+    })
+})
+
+describe('autofill buttons', () => {
+    xit('displays 2 players in the text input fields', () => {
+
+    })
+
+    xit('displays 4 players in the text input fields', () => {
+
+    })
+
+    xit('displays 8 players in the text input fields', () => {
+
+    })
+
+    xit('clears any extra already-filled cells', () => {
 
     })
 })
