@@ -9,8 +9,10 @@
 <div *ngFor="let m of seeds; index as i">
   <div>
     <h4 class="match-heading">Match {{i+1}}</h4>
-    <input type="radio" [name]="'match'+m.id" [value]="m.player1" (click)="m.player1Wins()">{{m.player1}}
-    <input type="radio" [name]="'match'+m.id" [value]="m.player2" (click)="m.player2Wins()">{{m.player2}}
+    <input type="radio" [id]="'match'+m.id+'-player1'" [name]="'match'+m.id" [value]="m.player1"
+      (click)="m.player1Wins()">{{m.player1}}
+    <input type="radio" [id]="'match'+m.id+'-player2'" [name]="'match'+m.id" [value]="m.player2"
+      (click)="m.player2Wins()">{{m.player2}}
   </div>
 </div>
 
