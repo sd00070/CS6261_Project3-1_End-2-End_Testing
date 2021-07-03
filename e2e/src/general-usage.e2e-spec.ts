@@ -92,7 +92,7 @@ describe('registering players', () => {
         expect(player2.getAttribute('value')).toEqual('Xion')
     })
 
-    xit('displays the 4 registered players in teh brackets', () => {
+    xit('displays the 4 registered players in the brackets', () => {
 
     })
 
