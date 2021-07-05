@@ -117,8 +117,17 @@ describe('autofill buttons', () => {
         expect(contestantTextInputs.get(1).getAttribute('value')).toEqual('Kaylee')
     })
 
-    xit('displays 4 players in the text input fields', () => {
+    it('displays 4 players in the text input fields', () => {
+        navigateToRegistration()
 
+        element(by.id('autofill-4-players-button')).click()
+
+        const contestantTextInputs = element.all(by.className('contestant-text-input'))
+
+        expect(contestantTextInputs.get(0).getAttribute('value')).toEqual('John')
+        expect(contestantTextInputs.get(1).getAttribute('value')).toEqual('Paul')
+        expect(contestantTextInputs.get(2).getAttribute('value')).toEqual('George')
+        expect(contestantTextInputs.get(3).getAttribute('value')).toEqual('Ringo')
     })
 
     xit('displays 8 players in the text input fields', () => {
