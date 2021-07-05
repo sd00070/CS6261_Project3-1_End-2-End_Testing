@@ -1,6 +1,6 @@
 import { by, element } from "protractor"
 import { getMessageText } from "../util/elements"
-import { clickRegisterButton, sendContestantTextInputs } from "../util/form-interaction"
+import { clickRegisterButton, getContestantTextInputs, sendContestantTextInputs } from "../util/form-interaction"
 import { navigateToRegistration } from "../util/navigation"
 
 describe('registration button', () => {
@@ -111,7 +111,7 @@ describe('autofill buttons', () => {
 
         element(by.id('autofill-2-players-button')).click()
 
-        const contestantTextInputs = element.all(by.className('contestant-text-input'))
+        const contestantTextInputs = getContestantTextInputs()
 
         expect(contestantTextInputs.get(0).getAttribute('value')).toEqual('Zoe')
         expect(contestantTextInputs.get(1).getAttribute('value')).toEqual('Kaylee')
@@ -122,7 +122,7 @@ describe('autofill buttons', () => {
 
         element(by.id('autofill-4-players-button')).click()
 
-        const contestantTextInputs = element.all(by.className('contestant-text-input'))
+        const contestantTextInputs = getContestantTextInputs()
 
         expect(contestantTextInputs.get(0).getAttribute('value')).toEqual('John')
         expect(contestantTextInputs.get(1).getAttribute('value')).toEqual('Paul')

@@ -1,7 +1,10 @@
-import { by, element } from "protractor"
+import { by, element, ElementArrayFinder } from "protractor"
+
+export const getContestantTextInputs = (): ElementArrayFinder =>
+    element.all(by.className('contestant-text-input'))
 
 export const sendContestantTextInputs = (...inputs: string[]): void => {
-    const contestantTextInputs = element.all(by.className('contestant-text-input'))
+    const contestantTextInputs = getContestantTextInputs()
 
     inputs.forEach((value: string, index: number) => contestantTextInputs.get(index).sendKeys(value))
 }
