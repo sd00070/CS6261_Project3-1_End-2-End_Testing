@@ -1,4 +1,4 @@
-import { by, element } from "protractor"
+import { by, element, promise } from "protractor"
 import { getMessageText } from "../util/elements"
 import { clickRegisterButton, getContestantTextInputValues, sendContestantTextInputs } from "../util/form-interaction"
 import { navigateToRegistration } from "../util/navigation"
@@ -106,14 +106,16 @@ describe('registration button', () => {
 })
 
 describe('autofill buttons', () => {
+
+    const expectContestantTextInputValuesToEqual = (expectedValues: string[]): promise.Promise<void> =>
+        getContestantTextInputValues().then(values => expect(values).toEqual(expectedValues))
+
     it('displays 2 players in the text input fields', () => {
         navigateToRegistration()
 
         element(by.id('autofill-2-players-button')).click()
 
-        getContestantTextInputValues().then(values => {
-            expect(values).toEqual(['Zoe', 'Kaylee', '', '', '', '', '', ''])
-        })
+        expectContestantTextInputValuesToEqual(['Zoe', 'Kaylee', '', '', '', '', '', ''])
     })
 
     it('displays 4 players in the text input fields', () => {
@@ -121,9 +123,7 @@ describe('autofill buttons', () => {
 
         element(by.id('autofill-4-players-button')).click()
 
-        getContestantTextInputValues().then(values => {
-            expect(values).toEqual(['John', 'Paul', 'George', 'Ringo', '', '', '', ''])
-        })
+        expectContestantTextInputValuesToEqual(['John', 'Paul', 'George', 'Ringo', '', '', '', ''])
     })
 
     it('displays 8 players in the text input fields', () => {
@@ -131,9 +131,7 @@ describe('autofill buttons', () => {
 
         element(by.id('autofill-8-players-button')).click()
 
-        getContestantTextInputValues().then(values =>
-            expect(values).toEqual(['Leia', 'Luke', 'Lando', 'Han', 'Chewy', 'R2D2', 'C3P0', 'Vader'])
-        )
+        expectContestantTextInputValuesToEqual(['Leia', 'Luke', 'Lando', 'Han', 'Chewy', 'R2D2', 'C3P0', 'Vader'])
     })
 
     xit('clears any extra already-filled cells', () => {
