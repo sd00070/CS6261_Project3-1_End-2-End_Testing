@@ -134,8 +134,14 @@ describe('autofill buttons', () => {
         expectContestantTextInputValuesToEqual(['Leia', 'Luke', 'Lando', 'Han', 'Chewy', 'R2D2', 'C3P0', 'Vader'])
     })
 
-    xit('clears any extra already-filled cells', () => {
+    it('clears any extra already-filled cells', () => {
+        navigateToRegistration()
 
+        sendContestantTextInputs('Woody', 'Bo Peep', 'Buzz', 'Jessie', 'Bullseye', 'Slinky', 'Mr. Potato Head', 'Rex')
+
+        element(by.id('autofill-2-players-button')).click()
+
+        expectContestantTextInputValuesToEqual(['Zoe', 'Kaylee', '', '', '', '', '', ''])
     })
 })
 
