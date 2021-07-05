@@ -1,6 +1,6 @@
 import { by, element } from "protractor"
 import { getMessageText } from "../util/elements"
-import { clickRegisterButton, getContestantTextInputs, sendContestantTextInputs } from "../util/form-interaction"
+import { clickRegisterButton, getContestantTextInputValues, sendContestantTextInputs } from "../util/form-interaction"
 import { navigateToRegistration } from "../util/navigation"
 
 describe('registration button', () => {
@@ -111,10 +111,9 @@ describe('autofill buttons', () => {
 
         element(by.id('autofill-2-players-button')).click()
 
-        const contestantTextInputs = getContestantTextInputs()
-
-        expect(contestantTextInputs.get(0).getAttribute('value')).toEqual('Zoe')
-        expect(contestantTextInputs.get(1).getAttribute('value')).toEqual('Kaylee')
+        getContestantTextInputValues().then(values => {
+            expect(values).toEqual(['Zoe', 'Kaylee', '', '', '', '', '', ''])
+        })
     })
 
     it('displays 4 players in the text input fields', () => {
@@ -122,12 +121,9 @@ describe('autofill buttons', () => {
 
         element(by.id('autofill-4-players-button')).click()
 
-        const contestantTextInputs = getContestantTextInputs()
-
-        expect(contestantTextInputs.get(0).getAttribute('value')).toEqual('John')
-        expect(contestantTextInputs.get(1).getAttribute('value')).toEqual('Paul')
-        expect(contestantTextInputs.get(2).getAttribute('value')).toEqual('George')
-        expect(contestantTextInputs.get(3).getAttribute('value')).toEqual('Ringo')
+        getContestantTextInputValues().then(values => {
+            expect(values).toEqual(['John', 'Paul', 'George', 'Ringo', '', '', '', ''])
+        })
     })
 
     xit('displays 8 players in the text input fields', () => {
