@@ -126,8 +126,14 @@ describe('autofill buttons', () => {
         })
     })
 
-    xit('displays 8 players in the text input fields', () => {
+    it('displays 8 players in the text input fields', () => {
+        navigateToRegistration()
 
+        element(by.id('autofill-8-players-button')).click()
+
+        getContestantTextInputValues().then(values =>
+            expect(values).toEqual(['Leia', 'Luke', 'Lando', 'Han', 'Chewy', 'R2D2', 'C3P0', 'Vader'])
+        )
     })
 
     xit('clears any extra already-filled cells', () => {
