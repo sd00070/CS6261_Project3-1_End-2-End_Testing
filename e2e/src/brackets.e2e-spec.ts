@@ -2,7 +2,7 @@ import { clickRegisterButton, register2Players, register4Players, register8Playe
 import { browser, by, element } from "protractor"
 import { getMessageText } from "../util/elements"
 import { fillContestantTextInputsWith } from "../util/form-interaction"
-import { clickBracketsLink, navigateToRegistration } from "../util/navigation"
+import { clickBracketsLink, clickRegistrationLink, navigateToRegistration } from "../util/navigation"
 import { clickCompleteRoundButton, getChampionText, getNumberOfMatches } from "../util/brackets"
 
 describe('brackets page', () => {
@@ -345,8 +345,37 @@ describe('brackets page', () => {
             expect(getChampionText()).toContain('Chewy')
         })
 
-        xit('walks through multiple tournaments', () => {
+        it('walks through multiple tournaments', () => {
+            browser.get('/')
 
+            clickRegistrationLink()
+
+            register2Players()
+
+            clickBracketsLink()
+
+            element(by.id('match1-player1')).click()
+
+            clickCompleteRoundButton()
+
+            expect(getChampionText()).toContain('Zoe')
+
+            clickRegistrationLink()
+
+            register4Players()
+
+            clickBracketsLink()
+
+            element(by.id('match1-player1')).click()
+            element(by.id('match2-player1')).click()
+
+            clickCompleteRoundButton()
+
+            element(by.id('match1-player1')).click()
+
+            clickCompleteRoundButton()
+
+            expect(getChampionText()).toContain('John')
         })
     })
 
