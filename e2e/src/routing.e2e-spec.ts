@@ -49,4 +49,8 @@ describe('Routing', () => {
     xit('remembers registered players when navigating from and to brackets page (staying on site)', () => {
 
     })
+
+    xit('clears the text inputs when returning to registration page', () => {
+
+    })
 })
