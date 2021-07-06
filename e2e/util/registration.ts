@@ -10,6 +10,10 @@ export const clickAutoFill4PlayersButton = () => {
     element(by.id('autofill-4-players-button')).click()
 }
 
+export const clickAutoFill8PlayersButton = () => {
+    element(by.id('autofill-8-players-button')).click()
+}
+
 export const clickRegisterButton = () => {
     element(by.id('register-contestants-button')).click()
 }
@@ -24,6 +28,12 @@ export const register4Players = () => {
     navigateToRegistration()
 
     clickAutoFill4PlayersButton()
+
+    clickRegisterButton()
+}
+
+export const register8Players = () => {
+    clickAutoFill8PlayersButton()
 
     clickRegisterButton()
 }

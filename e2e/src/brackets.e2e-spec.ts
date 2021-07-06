@@ -1,4 +1,4 @@
-import { clickRegisterButton, register2Players, register4Players } from "../util/registration"
+import { clickRegisterButton, register2Players, register4Players, register8Players } from "../util/registration"
 import { browser, by, element } from "protractor"
 import { getMessageText } from "../util/elements"
 import { fillContestantTextInputsWith } from "../util/form-interaction"
@@ -246,8 +246,21 @@ describe('brackets page', () => {
             expect(element(by.id('match1-player2')).getAttribute('value')).toEqual('George')
         })
 
-        xit('displays a new round of 2 matches when winners of 4 matches (8 players) are submitted', () => {
+        it('displays a new round of 2 matches when winners of 4 matches (8 players) are submitted', () => {
+            navigateToRegistration()
 
+            register8Players()
+
+            clickBracketsLink()
+
+            element(by.id('match1-player1')).click()
+            element(by.id('match2-player1')).click()
+            element(by.id('match3-player1')).click()
+            element(by.id('match4-player1')).click()
+
+            element(by.id('complete-round-button')).click()
+
+            expect(getNumberOfMatches()).toBe(2)
         })
 
         xit('displays the winners from the previous rounds in the new rounds (8 players initially)', () => {
