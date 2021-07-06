@@ -25,9 +25,7 @@ describe('Routing', () => {
     })
 
     it('can navigate to the brackets page', () => {
-        const bracketsLink = element(by.id('brackets-link'))
-
-        bracketsLink.click()
+        clickBracketsLink()
 
         const subpageTitle = element(by.id('subpageTitle'))
 
@@ -35,13 +33,9 @@ describe('Routing', () => {
     })
 
     it('can navigate to the welcome page from another page', () => {
-        const bracketsLink = element(by.id('brackets-link'))
+        clickBracketsLink()
 
-        bracketsLink.click()
-
-        const welcomeLink = element(by.id('welcome-link'))
-
-        welcomeLink.click()
+        element(by.id('welcome-link')).click()
 
         const subpageTitle = element(by.id('subpageTitle'))
 

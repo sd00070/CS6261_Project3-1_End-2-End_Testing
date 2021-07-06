@@ -1,7 +1,7 @@
 import { by, element } from "protractor"
 import { getMessageText } from "../util/elements"
 import { fillContestantTextInputsWith, clickRegisterButton } from "../util/form-interaction"
-import { navigateToRegistration } from "../util/navigation"
+import { clickBracketsLink, navigateToRegistration } from "../util/navigation"
 
 describe('brackets page', () => {
     describe('matches', () => {
@@ -15,7 +15,7 @@ describe('brackets page', () => {
 
             clickRegisterButton()
 
-            element(by.id('brackets-link')).click()
+            clickBracketsLink()
 
             const matches = element.all(by.className('match-heading'))
 
@@ -27,7 +27,7 @@ describe('brackets page', () => {
 
             clickRegisterButton()
 
-            element(by.id('brackets-link')).click()
+            clickBracketsLink()
 
             const matches = element.all(by.className('match-heading'))
 
@@ -39,7 +39,7 @@ describe('brackets page', () => {
 
             clickRegisterButton()
 
-            element(by.id('brackets-link')).click()
+            clickBracketsLink()
 
             const matches = element.all(by.className('match-heading'))
 
@@ -51,7 +51,7 @@ describe('brackets page', () => {
 
             clickRegisterButton()
 
-            element(by.id('brackets-link')).click()
+            clickBracketsLink()
 
             const player1 = element(by.id('match1-player1'))
             const player2 = element(by.id('match1-player2'))
@@ -65,7 +65,7 @@ describe('brackets page', () => {
 
             clickRegisterButton()
 
-            element(by.id('brackets-link')).click()
+            clickBracketsLink()
 
             const player1 = element(by.id('match1-player1'))
             const player2 = element(by.id('match1-player2'))
@@ -83,7 +83,7 @@ describe('brackets page', () => {
 
             clickRegisterButton()
 
-            element(by.id('brackets-link')).click()
+            clickBracketsLink()
 
             const player1 = element(by.id('match1-player1'))
             const player2 = element(by.id('match1-player2'))
@@ -109,7 +109,7 @@ describe('brackets page', () => {
 
             clickRegisterButton()
 
-            element(by.id('brackets-link')).click()
+            clickBracketsLink()
 
             const player1Label = element(by.id('match1-player1-label'))
             const player2Label = element(by.id('match1-player2-label'))
@@ -123,7 +123,7 @@ describe('brackets page', () => {
 
             clickRegisterButton()
 
-            element(by.id('brackets-link')).click()
+            clickBracketsLink()
 
             const player1Label = element(by.id('match1-player1-label'))
             const player2Label = element(by.id('match1-player2-label'))
@@ -141,7 +141,7 @@ describe('brackets page', () => {
 
             clickRegisterButton()
 
-            element(by.id('brackets-link')).click()
+            clickBracketsLink()
 
             const player1Label = element(by.id('match1-player1-label'))
             const player2Label = element(by.id('match1-player2-label'))
