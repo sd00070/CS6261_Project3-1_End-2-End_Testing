@@ -45,4 +45,8 @@ describe('Routing', () => {
 
         expect(subpageTitle.getText()).toContain("Brackets App")
     })
+
+    xit('remembers registered players when navigating from and to brackets page (staying on site)', () => {
+
+    })
 })
