@@ -1,8 +1,9 @@
 import { clickRegisterButton } from "../util/registration"
-import { by, element } from "protractor"
+import { browser, by, element } from "protractor"
 import { getMessageText } from "../util/elements"
 import { fillContestantTextInputsWith } from "../util/form-interaction"
 import { clickBracketsLink, navigateToRegistration } from "../util/navigation"
+import { clickCompleteRoundButton } from "../util/brackets"
 
 describe('brackets page', () => {
     describe('matches', () => {
@@ -165,8 +166,20 @@ describe('brackets page', () => {
     })
 
     describe('complete round button', () => {
-        xit('increments the round counter when the `complete round` button is clicked while brackets are empty', () => {
+        it('increments round counter when clicking `complete round` button while brackets are empty', () => {
+            browser.get('/')
 
+            clickBracketsLink()
+
+            expect(element(by.css('h3')).getText()).toContain('1')
+
+            clickCompleteRoundButton()
+
+            expect(element(by.css('h3')).getText()).toContain('2')
+
+            clickCompleteRoundButton()
+
+            expect(element(by.css('h3')).getText()).toContain('3')
         })
 
         xit('declares a winner when a match winner is selected with only one match (2 players)', () => {
