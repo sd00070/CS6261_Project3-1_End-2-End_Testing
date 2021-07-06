@@ -9,12 +9,14 @@
 <div *ngFor="let m of seeds; index as i">
   <div>
     <h4 class="match-heading">Match {{i+1}}</h4>
-    <input type="radio" [id]="'match'+m.id+'-player1'" [name]="'match'+m.id" [value]="m.player1"
-      (click)="m.player1Wins()">
-    <label [for]="'match'+m.id+'-player1'" [id]="'match'+m.id+'-player1-label'">{{m.player1}}</label>
-    <input type="radio" [id]="'match'+m.id+'-player2'" [name]="'match'+m.id" [value]="m.player2"
-      (click)="m.player2Wins()">
-    <label [for]="'match'+m.id+'-player2'" [id]="'match'+m.id+'-player2-label'">{{m.player2}}</label>
+    <input type="radio" [id]="'match'+m.id+'-player1'" class="player-radio-button" [name]="'match'+m.id"
+      [value]="m.player1" (click)="m.player1Wins()">
+    <label [for]="'match'+m.id+'-player1'" [id]="'match'+m.id+'-player1-label'"
+      class="player-label">{{m.player1}}</label>
+    <input type="radio" [id]="'match'+m.id+'-player2'" class="player-radio-button" [name]="'match'+m.id"
+      [value]="m.player2" (click)="m.player2Wins()">
+    <label [for]="'match'+m.id+'-player2'" [id]="'match'+m.id+'-player2-label'"
+      class="player-label">{{m.player2}}</label>
   </div>
 </div>
 

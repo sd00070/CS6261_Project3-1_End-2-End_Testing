@@ -3,7 +3,7 @@ import { browser, by, element } from "protractor"
 import { getMessageText } from "../util/elements"
 import { fillContestantTextInputsWith } from "../util/form-interaction"
 import { clickBracketsLink, clickRegistrationLink, navigateToRegistration } from "../util/navigation"
-import { clickCompleteRoundButton, getChampionText, getNumberOfMatches } from "../util/brackets"
+import { clickCompleteRoundButton, expectPlayerLabelTextsToContain, expectPlayerRadioButtonValuesToEqual, getChampionText, getNumberOfMatches } from "../util/brackets"
 
 describe('brackets page', () => {
     describe('matches', () => {
@@ -49,11 +49,7 @@ describe('brackets page', () => {
 
             clickBracketsLink()
 
-            const player1 = element(by.id('match1-player1'))
-            const player2 = element(by.id('match1-player2'))
-
-            expect(player1.getAttribute('value')).toEqual('Riku')
-            expect(player2.getAttribute('value')).toEqual('Xion')
+            expectPlayerRadioButtonValuesToEqual('Riku', 'Xion')
         })
 
         it('attaches the 4 registered players to the radio button values in the brackets', () => {
@@ -63,15 +59,7 @@ describe('brackets page', () => {
 
             clickBracketsLink()
 
-            const player1 = element(by.id('match1-player1'))
-            const player2 = element(by.id('match1-player2'))
-            const player3 = element(by.id('match2-player1'))
-            const player4 = element(by.id('match2-player2'))
-
-            expect(player1.getAttribute('value')).toEqual('Sora')
-            expect(player2.getAttribute('value')).toEqual('Donald')
-            expect(player3.getAttribute('value')).toEqual('Goofy')
-            expect(player4.getAttribute('value')).toEqual('Kairi')
+            expectPlayerRadioButtonValuesToEqual('Sora', 'Donald', 'Goofy', 'Kairi')
         })
 
         it('attaches the 8 registered players to the radio button values in the brackets', () => {
@@ -81,23 +69,7 @@ describe('brackets page', () => {
 
             clickBracketsLink()
 
-            const player1 = element(by.id('match1-player1'))
-            const player2 = element(by.id('match1-player2'))
-            const player3 = element(by.id('match2-player1'))
-            const player4 = element(by.id('match2-player2'))
-            const player5 = element(by.id('match3-player1'))
-            const player6 = element(by.id('match3-player2'))
-            const player7 = element(by.id('match4-player1'))
-            const player8 = element(by.id('match4-player2'))
-
-            expect(player1.getAttribute('value')).toEqual('Mickey')
-            expect(player2.getAttribute('value')).toEqual('Minnie')
-            expect(player3.getAttribute('value')).toEqual('Donald')
-            expect(player4.getAttribute('value')).toEqual('Daisy')
-            expect(player5.getAttribute('value')).toEqual('Goofy')
-            expect(player6.getAttribute('value')).toEqual('Max')
-            expect(player7.getAttribute('value')).toEqual('Clarabelle')
-            expect(player8.getAttribute('value')).toEqual('Horace')
+            expectPlayerRadioButtonValuesToEqual('Mickey', 'Minnie', 'Donald', 'Daisy', 'Goofy', 'Max', 'Clarabelle', 'Horace')
         })
 
         it('displays 2 players in the radio button labels', () => {
@@ -107,11 +79,7 @@ describe('brackets page', () => {
 
             clickBracketsLink()
 
-            const player1Label = element(by.id('match1-player1-label'))
-            const player2Label = element(by.id('match1-player2-label'))
-
-            expect(player1Label.getText()).toEqual('Zoe')
-            expect(player2Label.getText()).toEqual('Kaylee')
+            expectPlayerLabelTextsToContain('Zoe', 'Kaylee')
         })
 
         it('displays 4 players in the radio button labels', () => {
@@ -121,15 +89,7 @@ describe('brackets page', () => {
 
             clickBracketsLink()
 
-            const player1Label = element(by.id('match1-player1-label'))
-            const player2Label = element(by.id('match1-player2-label'))
-            const player3Label = element(by.id('match2-player1-label'))
-            const player4Label = element(by.id('match2-player2-label'))
-
-            expect(player1Label.getText()).toEqual('John')
-            expect(player2Label.getText()).toEqual('Paul')
-            expect(player3Label.getText()).toEqual('George')
-            expect(player4Label.getText()).toEqual('Ringo')
+            expectPlayerLabelTextsToContain('John', 'Paul', 'George', 'Ringo')
         })
 
         it('displays 8 players in the radio button labels', () => {
@@ -139,23 +99,7 @@ describe('brackets page', () => {
 
             clickBracketsLink()
 
-            const player1Label = element(by.id('match1-player1-label'))
-            const player2Label = element(by.id('match1-player2-label'))
-            const player3Label = element(by.id('match2-player1-label'))
-            const player4Label = element(by.id('match2-player2-label'))
-            const player5Label = element(by.id('match3-player1-label'))
-            const player6Label = element(by.id('match3-player2-label'))
-            const player7Label = element(by.id('match4-player1-label'))
-            const player8Label = element(by.id('match4-player2-label'))
-
-            expect(player1Label.getText()).toEqual('Leia')
-            expect(player2Label.getText()).toEqual('Luke')
-            expect(player3Label.getText()).toEqual('Lando')
-            expect(player4Label.getText()).toEqual('Han')
-            expect(player5Label.getText()).toEqual('Chewy')
-            expect(player6Label.getText()).toEqual('R2D2')
-            expect(player7Label.getText()).toEqual('C3P0')
-            expect(player8Label.getText()).toEqual('Vader')
+            expectPlayerLabelTextsToContain('Leia', 'Luke', 'Lando', 'Han', 'Chewy', 'R2D2', 'C3P0', 'Vader')
         })
     })
 
@@ -185,7 +129,7 @@ describe('brackets page', () => {
 
             element(by.id('match1-player1')).click()
 
-            element(by.id('complete-round-button')).click()
+            clickCompleteRoundButton()
 
             expect(element(by.css('h4')).getText()).toContain('Zoe')
         })
@@ -225,7 +169,7 @@ describe('brackets page', () => {
             element(by.id('match1-player1')).click()
             element(by.id('match2-player1')).click()
 
-            element(by.id('complete-round-button')).click()
+            clickCompleteRoundButton()
 
             expect(getNumberOfMatches()).toBe(1)
         })
@@ -240,10 +184,9 @@ describe('brackets page', () => {
             element(by.id('match1-player1')).click()
             element(by.id('match2-player1')).click()
 
-            element(by.id('complete-round-button')).click()
+            clickCompleteRoundButton()
 
-            expect(element(by.id('match1-player1')).getAttribute('value')).toEqual('John')
-            expect(element(by.id('match1-player2')).getAttribute('value')).toEqual('George')
+            expectPlayerRadioButtonValuesToEqual('John', 'George')
         })
 
         it('displays a new round of 2 matches when winners of 4 matches (8 players) are submitted', () => {
@@ -258,7 +201,7 @@ describe('brackets page', () => {
             element(by.id('match3-player1')).click()
             element(by.id('match4-player1')).click()
 
-            element(by.id('complete-round-button')).click()
+            clickCompleteRoundButton()
 
             expect(getNumberOfMatches()).toBe(2)
         })
@@ -275,12 +218,9 @@ describe('brackets page', () => {
             element(by.id('match3-player1')).click()
             element(by.id('match4-player1')).click()
 
-            element(by.id('complete-round-button')).click()
+            clickCompleteRoundButton()
 
-            expect(element(by.id('match1-player1')).getAttribute('value')).toEqual('Leia')
-            expect(element(by.id('match1-player2')).getAttribute('value')).toEqual('Lando')
-            expect(element(by.id('match2-player1')).getAttribute('value')).toEqual('Chewy')
-            expect(element(by.id('match2-player2')).getAttribute('value')).toEqual('C3P0')
+            expectPlayerRadioButtonValuesToEqual('Leia', 'Lando', 'Chewy', 'C3P0')
         })
 
         it('increments the counter when progressing to another round', () => {
@@ -295,7 +235,7 @@ describe('brackets page', () => {
 
             expect(element(by.css('h3')).getText()).toContain('1')
 
-            element(by.id('complete-round-button')).click()
+            clickCompleteRoundButton()
 
             expect(element(by.css('h3')).getText()).toContain('2')
         })
@@ -408,7 +348,7 @@ describe('brackets page', () => {
 
             expect(element(by.css('h3')).getText()).toContain('1')
 
-            element(by.id('complete-round-button')).click()
+            clickCompleteRoundButton()
 
             expect(element(by.css('h3')).getText()).toContain('1')
         })
