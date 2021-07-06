@@ -1,5 +1,5 @@
 import { getMessageText } from "../util/elements"
-import { sendContestantTextInputs, clickRegisterButton } from "../util/form-interaction"
+import { fillContestantTextInputsWith, clickRegisterButton } from "../util/form-interaction"
 import { navigateToRegistration } from "../util/navigation"
 
 describe('errors', () => {
@@ -19,7 +19,7 @@ describe('errors', () => {
         it('displays an error when 1 player is submitted', () => {
             navigateToRegistration()
 
-            sendContestantTextInputs('Samurai Jack')
+            fillContestantTextInputsWith('Samurai Jack')
 
             clickRegisterButton()
 
@@ -29,7 +29,7 @@ describe('errors', () => {
         it('displays an error when 3 players are submitted', () => {
             navigateToRegistration()
 
-            sendContestantTextInputs('Ed', 'Edd', 'Eddy')
+            fillContestantTextInputsWith('Ed', 'Edd', 'Eddy')
 
             clickRegisterButton()
 
@@ -39,7 +39,7 @@ describe('errors', () => {
         it('displays an error when 5 players are submitted', () => {
             navigateToRegistration()
 
-            sendContestantTextInputs('Beast Boy', 'Cyborg', 'Raven', 'Robin', 'Starfire')
+            fillContestantTextInputsWith('Beast Boy', 'Cyborg', 'Raven', 'Robin', 'Starfire')
 
             clickRegisterButton()
 
@@ -49,7 +49,7 @@ describe('errors', () => {
         it('displays an error when 6 players are submitted', () => {
             navigateToRegistration()
 
-            sendContestantTextInputs('Ulrich', 'Yumi', 'Jeremie', 'Odd', 'Aelita', 'William')
+            fillContestantTextInputsWith('Ulrich', 'Yumi', 'Jeremie', 'Odd', 'Aelita', 'William')
 
             clickRegisterButton()
 
@@ -59,7 +59,7 @@ describe('errors', () => {
         it('displays an error when 7 players are submitted', () => {
             navigateToRegistration()
 
-            sendContestantTextInputs('SpongeBob', 'Patrick', 'Squidward', 'Mr. Krabs', 'Plankton', 'Gary', 'Sandy')
+            fillContestantTextInputsWith('SpongeBob', 'Patrick', 'Squidward', 'Mr. Krabs', 'Plankton', 'Gary', 'Sandy')
 
             clickRegisterButton()
 
@@ -69,7 +69,7 @@ describe('errors', () => {
         it('displays an error when given duplicate names', () => {
             navigateToRegistration()
 
-            sendContestantTextInputs('Daryl', 'Daryl')
+            fillContestantTextInputsWith('Daryl', 'Daryl')
 
             clickRegisterButton()
 

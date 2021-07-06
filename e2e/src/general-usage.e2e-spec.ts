@@ -1,13 +1,13 @@
 import { by, element, promise } from "protractor"
 import { getMessageText } from "../util/elements"
-import { clickRegisterButton, getContestantTextInputValues, sendContestantTextInputs } from "../util/form-interaction"
+import { clickRegisterButton, getContestantTextInputValues, fillContestantTextInputsWith } from "../util/form-interaction"
 import { navigateToRegistration } from "../util/navigation"
 
 describe('registration button', () => {
     it('registers 2 players & displays them in a message', () => {
         navigateToRegistration()
 
-        sendContestantTextInputs('Yogi', 'Booboo')
+        fillContestantTextInputsWith('Yogi', 'Booboo')
 
         clickRegisterButton()
 
@@ -17,7 +17,7 @@ describe('registration button', () => {
     it('registers 4 players & displays them in a message', () => {
         navigateToRegistration()
 
-        sendContestantTextInputs('Mario', 'Luigi', 'Peach', 'Toad')
+        fillContestantTextInputsWith('Mario', 'Luigi', 'Peach', 'Toad')
 
         clickRegisterButton()
 
@@ -27,7 +27,7 @@ describe('registration button', () => {
     it('registers 8 players & displays them in a message', () => {
         navigateToRegistration()
 
-        sendContestantTextInputs('Frodo', 'Sam', 'Aragorn', 'Boromir', 'Legalos', 'Gimli', 'Merry', 'Pippin')
+        fillContestantTextInputsWith('Frodo', 'Sam', 'Aragorn', 'Boromir', 'Legalos', 'Gimli', 'Merry', 'Pippin')
 
         clickRegisterButton()
 
@@ -37,7 +37,7 @@ describe('registration button', () => {
     it('displays 1 match on the brackets page after registering 2 players', () => {
         navigateToRegistration()
 
-        sendContestantTextInputs('Mac', 'Bloo')
+        fillContestantTextInputsWith('Mac', 'Bloo')
 
         clickRegisterButton()
 
@@ -51,7 +51,7 @@ describe('registration button', () => {
     it('displays 2 matches on the brackets page after registering 4 players', () => {
         navigateToRegistration()
 
-        sendContestantTextInputs('James', 'George', 'Shelby', 'Don')
+        fillContestantTextInputsWith('James', 'George', 'Shelby', 'Don')
 
         clickRegisterButton()
 
@@ -65,7 +65,7 @@ describe('registration button', () => {
     it('displays 4 matches on the brackets page after registering 8 players', () => {
         navigateToRegistration()
 
-        sendContestantTextInputs('Snow White', 'Sleepy', 'Sneezy', 'Bashful', 'Doc', 'Dopey', 'Grumpy', 'Happy')
+        fillContestantTextInputsWith('Snow White', 'Sleepy', 'Sneezy', 'Bashful', 'Doc', 'Dopey', 'Grumpy', 'Happy')
 
         clickRegisterButton()
 
@@ -79,7 +79,7 @@ describe('registration button', () => {
     it('attaches the 2 registered players to the radio button values in the brackets', () => {
         navigateToRegistration()
 
-        sendContestantTextInputs('Riku', 'Xion')
+        fillContestantTextInputsWith('Riku', 'Xion')
 
         clickRegisterButton()
 
@@ -137,7 +137,7 @@ describe('autofill buttons', () => {
     it('clears any extra already-filled cells', () => {
         navigateToRegistration()
 
-        sendContestantTextInputs('Woody', 'Bo Peep', 'Buzz', 'Jessie', 'Bullseye', 'Slinky', 'Mr. Potato Head', 'Rex')
+        fillContestantTextInputsWith('Woody', 'Bo Peep', 'Buzz', 'Jessie', 'Bullseye', 'Slinky', 'Mr. Potato Head', 'Rex')
 
         element(by.id('autofill-2-players-button')).click()
 

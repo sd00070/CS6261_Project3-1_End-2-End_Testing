@@ -3,7 +3,7 @@ import { by, element, ElementArrayFinder, promise } from "protractor"
 export const getContestantTextInputs = (): ElementArrayFinder =>
     element.all(by.className('contestant-text-input'))
 
-export const sendContestantTextInputs = (...inputs: string[]): void => {
+export const fillContestantTextInputsWith = (...inputs: string[]): void => {
     const contestantTextInputs = getContestantTextInputs()
 
     inputs.forEach((value: string, index: number) => contestantTextInputs.get(index).sendKeys(value))
