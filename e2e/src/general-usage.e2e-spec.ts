@@ -92,8 +92,24 @@ describe('registration button', () => {
         expect(player2.getAttribute('value')).toEqual('Xion')
     })
 
-    xit('displays the 4 registered players in the brackets', () => {
+    it('attaches the 4 registered players to the radio button values in the brackets', () => {
+        navigateToRegistration()
 
+        fillContestantTextInputsWith('Sora', 'Donald', 'Goofy', 'Kairi')
+
+        clickRegisterButton()
+
+        element(by.id('brackets-link')).click()
+
+        const player1 = element(by.id('match1-player1'))
+        const player2 = element(by.id('match1-player2'))
+        const player3 = element(by.id('match2-player1'))
+        const player4 = element(by.id('match2-player2'))
+
+        expect(player1.getAttribute('value')).toEqual('Sora')
+        expect(player2.getAttribute('value')).toEqual('Donald')
+        expect(player3.getAttribute('value')).toEqual('Goofy')
+        expect(player4.getAttribute('value')).toEqual('Kairi')
     })
 
     xit('displays the 8 registered players in the brackets', () => {
