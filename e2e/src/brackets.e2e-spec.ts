@@ -190,6 +190,10 @@ describe('brackets page', () => {
             expect(element(by.css('h4')).getText()).toContain('Zoe')
         })
 
+        xit('removes complete round button when winner declared', () => {
+
+        })
+
         it('displays a new round of 1 match when winners for 2 matches (4 players) are submitted', () => {
             navigateToRegistration()
 
@@ -205,7 +209,15 @@ describe('brackets page', () => {
             expect(getNumberOfMatches()).toBe(1)
         })
 
+        xit('displays the winners from the previous rounds in the new round (4 players initially)', () => {
+
+        })
+
         xit('displays a new round of 2 matches when winners of 4 matches (8 players) are submitted', () => {
+
+        })
+
+        xit('displays the winners from the previous rounds in the new rounds (8 players initially)', () => {
 
         })
 
