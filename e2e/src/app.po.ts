@@ -16,4 +16,8 @@ export class AppPage {
   get messageText() {
     return element(by.id('message')).getText()
   }
+
+  clickBracketsLink() {
+    return element(by.id('brackets-link')).click() as Promise<any>
+  }
 }

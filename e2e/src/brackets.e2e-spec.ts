@@ -1,13 +1,17 @@
 import { clickRegisterButton, fillContestantTextInputsWith, register2Players, register4Players, register8Players } from "../util/registration"
 import { browser, by, element } from "protractor"
 import { clickBracketsLink, clickRegistrationLink, navigateToRegistration } from "../util/navigation"
-import { clickCompleteRoundButton, expectPlayerLabelTextsToContain, expectPlayerRadioButtonValuesToEqual, getChampionText, getNumberOfMatches } from "../util/brackets"
-import { AppPage } from "./app.po"
+import { expectPlayerLabelTextsToContain, expectPlayerRadioButtonValuesToEqual, } from "../util/brackets"
+import { BracketsPage } from "./brackets.po"
 
 describe('brackets page', () => {
     describe('matches', () => {
 
+        let bracketsPage: BracketsPage
+
         beforeEach(() => {
+            bracketsPage = new BracketsPage()
+
             navigateToRegistration()
         })
 
@@ -18,7 +22,7 @@ describe('brackets page', () => {
 
             clickBracketsLink()
 
-            expect(getNumberOfMatches()).toBe(1)
+            expect(bracketsPage.numberOfMatches).toBe(1)
         })
 
         it('displays 2 matches on the brackets page after registering 4 players', () => {
@@ -28,7 +32,7 @@ describe('brackets page', () => {
 
             clickBracketsLink()
 
-            expect(getNumberOfMatches()).toBe(2)
+            expect(bracketsPage.numberOfMatches).toBe(2)
         })
 
         it('displays 4 matches on the brackets page after registering 8 players', () => {
@@ -38,7 +42,7 @@ describe('brackets page', () => {
 
             clickBracketsLink()
 
-            expect(getNumberOfMatches()).toBe(4)
+            expect(bracketsPage.numberOfMatches).toBe(4)
         })
 
         it('attaches the 2 registered players to the radio button values in the brackets', () => {
@@ -103,6 +107,13 @@ describe('brackets page', () => {
     })
 
     describe('complete round button', () => {
+
+        let bracketsPage: BracketsPage
+
+        beforeEach(() => {
+            bracketsPage = new BracketsPage()
+        })
+
         it('increments round counter when clicking `complete round` button while brackets are empty', () => {
             browser.get('/')
 
@@ -110,11 +121,11 @@ describe('brackets page', () => {
 
             expect(element(by.css('h3')).getText()).toContain('1')
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
             expect(element(by.css('h3')).getText()).toContain('2')
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
             expect(element(by.css('h3')).getText()).toContain('3')
         })
@@ -128,7 +139,7 @@ describe('brackets page', () => {
 
             element(by.id('match1-player1')).click()
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
             expect(element(by.css('h4')).getText()).toContain('Zoe')
         })
@@ -144,7 +155,7 @@ describe('brackets page', () => {
 
             expect(element(by.id('complete-round-button'))).toBeTruthy()
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
             /*
              * I needed to grab an array rather than just the single button
@@ -168,9 +179,9 @@ describe('brackets page', () => {
             element(by.id('match1-player1')).click()
             element(by.id('match2-player1')).click()
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
-            expect(getNumberOfMatches()).toBe(1)
+            expect(bracketsPage.numberOfMatches).toBe(1)
         })
 
         it('displays the winners from the previous rounds in the new round (4 players initially)', () => {
@@ -183,7 +194,7 @@ describe('brackets page', () => {
             element(by.id('match1-player1')).click()
             element(by.id('match2-player1')).click()
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
             expectPlayerRadioButtonValuesToEqual('John', 'George')
         })
@@ -200,9 +211,9 @@ describe('brackets page', () => {
             element(by.id('match3-player1')).click()
             element(by.id('match4-player1')).click()
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
-            expect(getNumberOfMatches()).toBe(2)
+            expect(bracketsPage.numberOfMatches).toBe(2)
         })
 
         it('displays the winners from the previous rounds in the new rounds (8 players initially)', () => {
@@ -217,7 +228,7 @@ describe('brackets page', () => {
             element(by.id('match3-player1')).click()
             element(by.id('match4-player1')).click()
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
             expectPlayerRadioButtonValuesToEqual('Leia', 'Lando', 'Chewy', 'C3P0')
         })
@@ -234,7 +245,7 @@ describe('brackets page', () => {
 
             expect(element(by.css('h3')).getText()).toContain('1')
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
             expect(element(by.css('h3')).getText()).toContain('2')
         })
@@ -249,13 +260,13 @@ describe('brackets page', () => {
             element(by.id('match1-player1')).click()
             element(by.id('match2-player1')).click()
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
             element(by.id('match1-player1')).click()
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
-            expect(getChampionText()).toContain('John')
+            expect(bracketsPage.championText).toContain('John')
         })
 
         it('walks through a full 8-player tournament', () => {
@@ -270,18 +281,18 @@ describe('brackets page', () => {
             element(by.id('match3-player1')).click()
             element(by.id('match4-player1')).click()
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
             element(by.id('match1-player1')).click()
             element(by.id('match2-player1')).click()
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
             element(by.id('match1-player2')).click()
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
-            expect(getChampionText()).toContain('Chewy')
+            expect(bracketsPage.championText).toContain('Chewy')
         })
 
         it('walks through multiple tournaments', () => {
@@ -295,9 +306,9 @@ describe('brackets page', () => {
 
             element(by.id('match1-player1')).click()
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
-            expect(getChampionText()).toContain('Zoe')
+            expect(bracketsPage.championText).toContain('Zoe')
 
             clickRegistrationLink()
 
@@ -308,24 +319,24 @@ describe('brackets page', () => {
             element(by.id('match1-player1')).click()
             element(by.id('match2-player1')).click()
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
             element(by.id('match1-player1')).click()
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
-            expect(getChampionText()).toContain('John')
+            expect(bracketsPage.championText).toContain('John')
         })
     })
 
     describe('errors', () => {
 
-        let appPage: AppPage
+        let bracketsPage: BracketsPage
 
         beforeEach(() => {
-            appPage = new AppPage()
+            bracketsPage = new BracketsPage()
 
-            appPage.navigateTo()
+            browser.get('/')
 
             clickRegistrationLink()
 
@@ -335,17 +346,17 @@ describe('brackets page', () => {
         })
 
         it('displays an error if no winners are selected on submission', () => {
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
-            expect(appPage.messageText).toContain('Please complete all matches')
+            expect(bracketsPage.messageText).toContain('Please complete all matches')
         })
 
         it('displays an error if any match is missing a selected winner', () => {
             element(by.id('match1-player1')).click()
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
-            expect(appPage.messageText).toContain('Please complete all matches')
+            expect(bracketsPage.messageText).toContain('Please complete all matches')
         })
 
         it('does not increment the counter on error', () => {
@@ -353,7 +364,7 @@ describe('brackets page', () => {
 
             expect(element(by.css('h3')).getText()).toContain('1')
 
-            clickCompleteRoundButton()
+            bracketsPage.clickCompleteRoundButton()
 
             expect(element(by.css('h3')).getText()).toContain('1')
         })
