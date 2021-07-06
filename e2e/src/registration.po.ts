@@ -1,5 +1,5 @@
-import { by, element, ElementArrayFinder, promise } from "protractor";
-import { AppPage } from "./app.po";
+import { by, element, ElementArrayFinder, promise } from "protractor"
+import { AppPage } from "./app.po"
 
 export class RegistrationPage extends AppPage {
     navigateTo() {
