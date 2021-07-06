@@ -8,4 +8,8 @@ export class AppPage {
   get titleText() {
     return element(by.css('app-root h1')).getText() as Promise<string>;
   }
+
+  get subpageTitleText() {
+    return element(by.id('subpageTitle')).getText()
+  }
 }

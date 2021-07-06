@@ -1,16 +1,20 @@
 import { expectContestantTextInputValuesToEqual, register4Players } from "../util/registration"
-import { browser, by, element } from "protractor"
+import { by, element } from "protractor"
 import { clickBracketsLink, clickRegistrationLink } from "../util/navigation"
-import { getSubpageTitleText } from "../util/elements"
+import { AppPage } from "./app.po"
 
 describe('Routing', () => {
 
+    let appPage: AppPage
+
     beforeEach(() => {
-        browser.get('/')
+        appPage = new AppPage()
+
+        appPage.navigateTo()
     })
 
     it('navigates to welcome page', () => {
-        expect(getSubpageTitleText()).toContain("Brackets App")
+        expect(appPage.subpageTitleText).toContain("Brackets App")
     })
 
     it('can navigate to the registration page', () => {
@@ -18,13 +22,13 @@ describe('Routing', () => {
 
         registrationLink.click()
 
-        expect(getSubpageTitleText()).toContain("Register Players")
+        expect(appPage.subpageTitleText).toContain("Register Players")
     })
 
     it('can navigate to the brackets page', () => {
         clickBracketsLink()
 
-        expect(getSubpageTitleText()).toContain("Brackets")
+        expect(appPage.subpageTitleText).toContain("Brackets")
     })
 
     it('can navigate to the welcome page from another page', () => {
@@ -32,7 +36,7 @@ describe('Routing', () => {
 
         element(by.id('welcome-link')).click()
 
-        expect(getSubpageTitleText()).toContain("Brackets App")
+        expect(appPage.subpageTitleText).toContain("Brackets App")
     })
 
     it('clears the text inputs when returning to registration page', () => {
