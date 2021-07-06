@@ -1,7 +1,8 @@
-import { clickRegisterButton, expectContestantTextInputValuesToEqual, fillContestantTextInputsWith } from "../util/registration"
+import { clickRegisterButton, fillContestantTextInputsWith } from "../util/registration"
 import { by, element } from "protractor"
-import { clickRegistrationLink, navigateToRegistration } from "../util/navigation"
+import { clickRegistrationLink } from "../util/navigation"
 import { AppPage } from "./app.po"
+import { expectContestantTextInputValuesToEqual } from "../util/assertions"
 
 describe('registration page', () => {
     describe('register contestants button', () => {

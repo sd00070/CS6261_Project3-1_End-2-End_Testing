@@ -48,6 +48,3 @@ export const fillContestantTextInputsWith = (...inputs: string[]): void => {
 
 export const getContestantTextInputValues = (): promise.Promise<string[]> =>
     getContestantTextInputs().map(element => element.getAttribute('value'))
-
-export const expectContestantTextInputValuesToEqual = (expectedValues: string[]): promise.Promise<void> =>
-    getContestantTextInputValues().then(values => expect(values).toEqual(expectedValues))

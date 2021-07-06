@@ -1,8 +1,8 @@
-import { expectContestantTextInputValuesToEqual, register4Players } from "../util/registration"
+import { register4Players } from "../util/registration"
 import { by, element } from "protractor"
 import { clickBracketsLink, clickRegistrationLink } from "../util/navigation"
 import { AppPage } from "./app.po"
-import { expectPlayerRadioButtonValuesToEqual } from "../util/brackets"
+import { expectContestantTextInputValuesToEqual, expectPlayerRadioButtonValuesToEqual } from "../util/assertions"
 
 describe('Routing', () => {
 

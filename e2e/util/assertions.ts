@@ -1,4 +1,5 @@
 import { by, element } from "protractor"
+import { getContestantTextInputValues } from "./registration"
 
 export const expectPlayerRadioButtonValuesToEqual = (...values: string[]) => {
     const playerRadioButtons = element.all(by.className('player-radio-button'))
@@ -11,3 +12,6 @@ export const expectPlayerLabelTextsToContain = (...values: string[]) => {
 
     values.forEach((value, index) => expect(playerLabels.get(index).getText()).toContain(value))
 }
+
+export const expectContestantTextInputValuesToEqual = (expectedValues: string[]) =>
+    getContestantTextInputValues().then(values => expect(values).toEqual(expectedValues))

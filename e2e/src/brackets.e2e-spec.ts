@@ -1,7 +1,7 @@
 import { clickRegisterButton, fillContestantTextInputsWith, register2Players, register4Players, register8Players } from "../util/registration"
 import { browser, by, element } from "protractor"
 import { clickBracketsLink, clickRegistrationLink, navigateToRegistration } from "../util/navigation"
-import { expectPlayerLabelTextsToContain, expectPlayerRadioButtonValuesToEqual, } from "../util/brackets"
+import { expectPlayerLabelTextsToContain, expectPlayerRadioButtonValuesToEqual } from "../util/assertions"
 import { BracketsPage } from "./brackets.po"
 
 describe('brackets page', () => {
