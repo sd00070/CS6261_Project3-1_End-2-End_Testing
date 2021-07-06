@@ -176,8 +176,32 @@ describe('registration button', () => {
         expect(player4Label.getText()).toEqual('Ringo')
     })
 
-    xit('display 8 players in the radio button labels', () => {
+    it('display 8 players in the radio button labels', () => {
+        navigateToRegistration()
 
+        element(by.id('autofill-8-players-button')).click()
+
+        clickRegisterButton()
+
+        element(by.id('brackets-link')).click()
+
+        const player1Label = element(by.id('match1-player1-label'))
+        const player2Label = element(by.id('match1-player2-label'))
+        const player3Label = element(by.id('match2-player1-label'))
+        const player4Label = element(by.id('match2-player2-label'))
+        const player5Label = element(by.id('match3-player1-label'))
+        const player6Label = element(by.id('match3-player2-label'))
+        const player7Label = element(by.id('match4-player1-label'))
+        const player8Label = element(by.id('match4-player2-label'))
+
+        expect(player1Label.getText()).toEqual('Leia')
+        expect(player2Label.getText()).toEqual('Luke')
+        expect(player3Label.getText()).toEqual('Lando')
+        expect(player4Label.getText()).toEqual('Han')
+        expect(player5Label.getText()).toEqual('Chewy')
+        expect(player6Label.getText()).toEqual('R2D2')
+        expect(player7Label.getText()).toEqual('C3P0')
+        expect(player8Label.getText()).toEqual('Vader')
     })
 
     xit('clears the text inputs when returning to registration page', () => {
