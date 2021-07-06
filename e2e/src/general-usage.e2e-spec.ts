@@ -4,9 +4,12 @@ import { clickRegisterButton, getContestantTextInputValues, fillContestantTextIn
 import { navigateToRegistration } from "../util/navigation"
 
 describe('registration button', () => {
-    it('registers 2 players & displays them in a message', () => {
-        navigateToRegistration()
 
+    beforeEach(() => {
+        navigateToRegistration()
+    })
+
+    it('registers 2 players & displays them in a message', () => {
         fillContestantTextInputsWith('Yogi', 'Booboo')
 
         clickRegisterButton()
@@ -15,8 +18,6 @@ describe('registration button', () => {
     })
 
     it('registers 4 players & displays them in a message', () => {
-        navigateToRegistration()
-
         fillContestantTextInputsWith('Mario', 'Luigi', 'Peach', 'Toad')
 
         clickRegisterButton()
@@ -25,8 +26,6 @@ describe('registration button', () => {
     })
 
     it('registers 8 players & displays them in a message', () => {
-        navigateToRegistration()
-
         fillContestantTextInputsWith('Frodo', 'Sam', 'Aragorn', 'Boromir', 'Legalos', 'Gimli', 'Merry', 'Pippin')
 
         clickRegisterButton()
@@ -35,8 +34,6 @@ describe('registration button', () => {
     })
 
     it('displays 1 match on the brackets page after registering 2 players', () => {
-        navigateToRegistration()
-
         fillContestantTextInputsWith('Mac', 'Bloo')
 
         clickRegisterButton()
@@ -49,8 +46,6 @@ describe('registration button', () => {
     })
 
     it('displays 2 matches on the brackets page after registering 4 players', () => {
-        navigateToRegistration()
-
         fillContestantTextInputsWith('James', 'George', 'Shelby', 'Don')
 
         clickRegisterButton()
@@ -63,8 +58,6 @@ describe('registration button', () => {
     })
 
     it('displays 4 matches on the brackets page after registering 8 players', () => {
-        navigateToRegistration()
-
         fillContestantTextInputsWith('Snow White', 'Sleepy', 'Sneezy', 'Bashful', 'Doc', 'Dopey', 'Grumpy', 'Happy')
 
         clickRegisterButton()
@@ -77,8 +70,6 @@ describe('registration button', () => {
     })
 
     it('attaches the 2 registered players to the radio button values in the brackets', () => {
-        navigateToRegistration()
-
         fillContestantTextInputsWith('Riku', 'Xion')
 
         clickRegisterButton()
@@ -93,8 +84,6 @@ describe('registration button', () => {
     })
 
     it('attaches the 4 registered players to the radio button values in the brackets', () => {
-        navigateToRegistration()
-
         fillContestantTextInputsWith('Sora', 'Donald', 'Goofy', 'Kairi')
 
         clickRegisterButton()
@@ -113,8 +102,6 @@ describe('registration button', () => {
     })
 
     it('attaches the 8 registered players to the radio button values in the brackets', () => {
-        navigateToRegistration()
-
         fillContestantTextInputsWith('Mickey', 'Minnie', 'Donald', 'Daisy', 'Goofy', 'Max', 'Clarabelle', 'Horace')
 
         clickRegisterButton()
@@ -141,8 +128,6 @@ describe('registration button', () => {
     })
 
     it('display 2 players in the radio button labels', () => {
-        navigateToRegistration()
-
         element(by.id('autofill-2-players-button')).click()
 
         clickRegisterButton()
@@ -157,8 +142,6 @@ describe('registration button', () => {
     })
 
     it('display 4 players in the radio button labels', () => {
-        navigateToRegistration()
-
         element(by.id('autofill-4-players-button')).click()
 
         clickRegisterButton()
@@ -177,8 +160,6 @@ describe('registration button', () => {
     })
 
     it('display 8 players in the radio button labels', () => {
-        navigateToRegistration()
-
         element(by.id('autofill-8-players-button')).click()
 
         clickRegisterButton()
@@ -214,33 +195,29 @@ describe('autofill buttons', () => {
     const expectContestantTextInputValuesToEqual = (expectedValues: string[]): promise.Promise<void> =>
         getContestantTextInputValues().then(values => expect(values).toEqual(expectedValues))
 
-    it('displays 2 players in the text input fields', () => {
+    beforeEach(() => {
         navigateToRegistration()
+    })
 
+    it('displays 2 players in the text input fields', () => {
         element(by.id('autofill-2-players-button')).click()
 
         expectContestantTextInputValuesToEqual(['Zoe', 'Kaylee', '', '', '', '', '', ''])
     })
 
     it('displays 4 players in the text input fields', () => {
-        navigateToRegistration()
-
         element(by.id('autofill-4-players-button')).click()
 
         expectContestantTextInputValuesToEqual(['John', 'Paul', 'George', 'Ringo', '', '', '', ''])
     })
 
     it('displays 8 players in the text input fields', () => {
-        navigateToRegistration()
-
         element(by.id('autofill-8-players-button')).click()
 
         expectContestantTextInputValuesToEqual(['Leia', 'Luke', 'Lando', 'Han', 'Chewy', 'R2D2', 'C3P0', 'Vader'])
     })
 
     it('clears any extra already-filled cells', () => {
-        navigateToRegistration()
-
         fillContestantTextInputsWith('Woody', 'Bo Peep', 'Buzz', 'Jessie', 'Bullseye', 'Slinky', 'Mr. Potato Head', 'Rex')
 
         element(by.id('autofill-2-players-button')).click()

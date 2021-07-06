@@ -1,17 +1,18 @@
 import { browser, by, element } from "protractor"
 
 describe('Routing', () => {
-    it('navigates to welcome page', () => {
-        browser.get('/')
 
+    beforeEach(() => {
+        browser.get('/')
+    })
+
+    it('navigates to welcome page', () => {
         const subpageTitle = element(by.id('subpageTitle'))
 
         expect(subpageTitle.getText()).toContain("Brackets App")
     })
 
     it('can navigate to the registration page', () => {
-        browser.get('/')
-
         const registrationLink = element(by.id('registration-link'))
 
         registrationLink.click()
@@ -22,8 +23,6 @@ describe('Routing', () => {
     })
 
     it('can navigate to the brackets page', () => {
-        browser.get('/')
-
         const bracketsLink = element(by.id('brackets-link'))
 
         bracketsLink.click()
@@ -34,8 +33,6 @@ describe('Routing', () => {
     })
 
     it('can navigate to the welcome page from another page', () => {
-        browser.get('/')
-
         const bracketsLink = element(by.id('brackets-link'))
 
         bracketsLink.click()

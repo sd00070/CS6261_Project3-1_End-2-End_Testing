@@ -8,17 +8,17 @@ describe('errors', () => {
 
         const contestantNumberError = 'Should be 2, 4, or 8 contestants'
 
-        it('displays error when no contestants filled on submit', () => {
+        beforeEach(() => {
             navigateToRegistration()
+        })
 
+        it('displays error when no contestants filled on submit', () => {
             clickRegisterButton()
 
             expect(getMessageText()).toContain(contestantNumberError)
         })
 
         it('displays an error when 1 player is submitted', () => {
-            navigateToRegistration()
-
             fillContestantTextInputsWith('Samurai Jack')
 
             clickRegisterButton()
@@ -27,8 +27,6 @@ describe('errors', () => {
         })
 
         it('displays an error when 3 players are submitted', () => {
-            navigateToRegistration()
-
             fillContestantTextInputsWith('Ed', 'Edd', 'Eddy')
 
             clickRegisterButton()
@@ -37,8 +35,6 @@ describe('errors', () => {
         })
 
         it('displays an error when 5 players are submitted', () => {
-            navigateToRegistration()
-
             fillContestantTextInputsWith('Beast Boy', 'Cyborg', 'Raven', 'Robin', 'Starfire')
 
             clickRegisterButton()
@@ -47,8 +43,6 @@ describe('errors', () => {
         })
 
         it('displays an error when 6 players are submitted', () => {
-            navigateToRegistration()
-
             fillContestantTextInputsWith('Ulrich', 'Yumi', 'Jeremie', 'Odd', 'Aelita', 'William')
 
             clickRegisterButton()
@@ -57,8 +51,6 @@ describe('errors', () => {
         })
 
         it('displays an error when 7 players are submitted', () => {
-            navigateToRegistration()
-
             fillContestantTextInputsWith('SpongeBob', 'Patrick', 'Squidward', 'Mr. Krabs', 'Plankton', 'Gary', 'Sandy')
 
             clickRegisterButton()
@@ -67,8 +59,6 @@ describe('errors', () => {
         })
 
         it('displays an error when given duplicate names', () => {
-            navigateToRegistration()
-
             fillContestantTextInputsWith('Daryl', 'Daryl')
 
             clickRegisterButton()
