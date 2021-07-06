@@ -329,8 +329,12 @@ describe('brackets page', () => {
             expect(getMessageText()).toContain('Please complete all matches')
         })
 
-        xit('displays an error if any match is missing a selected winner', () => {
+        it('displays an error if any match is missing a selected winner', () => {
+            element(by.id('match1-player1')).click()
 
+            clickCompleteRoundButton()
+
+            expect(getMessageText()).toContain('Please complete all matches')
         })
 
         it('does not increment the counter on error', () => {
