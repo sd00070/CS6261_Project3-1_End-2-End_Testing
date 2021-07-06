@@ -13,5 +13,8 @@ export const expectPlayerLabelTextsToContain = (...values: string[]) => {
     values.forEach((value, index) => expect(playerLabels.get(index).getText()).toContain(value))
 }
 
-export const expectContestantTextInputValuesToEqual = (expectedValues: string[]) =>
-    (new RegistrationPage()).contestantTextInputValues.then(values => expect(values).toEqual(expectedValues))
+export const expectContestantTextInputValuesToEqual = (...values: string[]) => {
+    const contestantTextInputs = element.all(by.className('contestant-text-input'))
+
+    values.forEach((value, index) => expect(contestantTextInputs.get(index).getAttribute('value')).toEqual(value))
+}

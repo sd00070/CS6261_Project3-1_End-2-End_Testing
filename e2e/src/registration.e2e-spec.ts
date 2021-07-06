@@ -56,19 +56,19 @@ describe('registration page', () => {
         it('displays 2 players in the text input fields', () => {
             element(by.id('autofill-2-players-button')).click()
 
-            expectContestantTextInputValuesToEqual(['Zoe', 'Kaylee', '', '', '', '', '', ''])
+            expectContestantTextInputValuesToEqual('Zoe', 'Kaylee', '', '', '', '', '', '')
         })
 
         it('displays 4 players in the text input fields', () => {
             element(by.id('autofill-4-players-button')).click()
 
-            expectContestantTextInputValuesToEqual(['John', 'Paul', 'George', 'Ringo', '', '', '', ''])
+            expectContestantTextInputValuesToEqual('John', 'Paul', 'George', 'Ringo', '', '', '', '')
         })
 
         it('displays 8 players in the text input fields', () => {
             element(by.id('autofill-8-players-button')).click()
 
-            expectContestantTextInputValuesToEqual(['Leia', 'Luke', 'Lando', 'Han', 'Chewy', 'R2D2', 'C3P0', 'Vader'])
+            expectContestantTextInputValuesToEqual('Leia', 'Luke', 'Lando', 'Han', 'Chewy', 'R2D2', 'C3P0', 'Vader')
         })
 
         it('clears any extra already-filled cells', () => {
@@ -76,7 +76,7 @@ describe('registration page', () => {
 
             element(by.id('autofill-2-players-button')).click()
 
-            expectContestantTextInputValuesToEqual(['Zoe', 'Kaylee', '', '', '', '', '', ''])
+            expectContestantTextInputValuesToEqual('Zoe', 'Kaylee', '', '', '', '', '', '')
         })
     })
 

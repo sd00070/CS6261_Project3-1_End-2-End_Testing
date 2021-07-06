@@ -48,7 +48,7 @@ describe('Routing', () => {
 
         appPage.clickRegistrationLink()
 
-        expectContestantTextInputValuesToEqual(['', '', '', '', '', '', '', ''])
+        expectContestantTextInputValuesToEqual('', '', '', '', '', '', '', '')
     })
 
     it('remembers registered players when navigating from and to brackets page (staying on site)', () => {
