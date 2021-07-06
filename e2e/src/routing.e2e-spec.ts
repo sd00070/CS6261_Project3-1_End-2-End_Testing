@@ -2,6 +2,7 @@ import { expectContestantTextInputValuesToEqual, register4Players } from "../uti
 import { by, element } from "protractor"
 import { clickBracketsLink, clickRegistrationLink } from "../util/navigation"
 import { AppPage } from "./app.po"
+import { expectPlayerRadioButtonValuesToEqual } from "../util/brackets"
 
 describe('Routing', () => {
 
@@ -54,23 +55,12 @@ describe('Routing', () => {
 
         clickBracketsLink()
 
-        let player1 = element(by.id('match1-player1'))
-        let player2 = element(by.id('match1-player2'))
-        let player3 = element(by.id('match2-player1'))
-        let player4 = element(by.id('match2-player2'))
+        expectPlayerRadioButtonValuesToEqual('John', 'Paul', 'George', 'Ringo')
 
         clickRegistrationLink()
 
         clickBracketsLink()
 
-        player1 = element(by.id('match1-player1'))
-        player2 = element(by.id('match1-player2'))
-        player3 = element(by.id('match2-player1'))
-        player4 = element(by.id('match2-player2'))
-
-        expect(player1.getAttribute('value')).toEqual('John')
-        expect(player2.getAttribute('value')).toEqual('Paul')
-        expect(player3.getAttribute('value')).toEqual('George')
-        expect(player4.getAttribute('value')).toEqual('Ringo')
+        expectPlayerRadioButtonValuesToEqual('John', 'Paul', 'George', 'Ringo')
     })
 })
