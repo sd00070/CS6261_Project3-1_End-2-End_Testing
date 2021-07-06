@@ -18,9 +18,7 @@ describe('Routing', () => {
     })
 
     it('can navigate to the registration page', () => {
-        const registrationLink = element(by.id('registration-link'))
-
-        registrationLink.click()
+        appPage.clickRegistrationLink()
 
         expect(appPage.subpageTitleText).toContain("Register Players")
     })
@@ -34,7 +32,7 @@ describe('Routing', () => {
     it('can navigate to the welcome page from another page', () => {
         appPage.clickBracketsLink()
 
-        element(by.id('welcome-link')).click()
+        appPage.clickWelcomeLink()
 
         expect(appPage.subpageTitleText).toContain("Brackets App")
     })

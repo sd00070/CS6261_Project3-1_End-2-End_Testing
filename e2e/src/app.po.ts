@@ -17,6 +17,10 @@ export class AppPage {
     return element(by.id('message')).getText()
   }
 
+  clickWelcomeLink() {
+    return element(by.id('welcome-link')).click() as Promise<any>
+  }
+
   clickBracketsLink() {
     return element(by.id('brackets-link')).click() as Promise<any>
   }

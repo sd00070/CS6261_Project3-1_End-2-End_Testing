@@ -74,13 +74,11 @@ describe('brackets page', () => {
 
         beforeEach(() => {
             bracketsPage = new BracketsPage()
+
+            bracketsPage.navigateTo()
         })
 
         it('increments round counter when clicking `complete round` button while brackets are empty', () => {
-            browser.get('/')
-
-            bracketsPage.clickBracketsLink()
-
             expect(element(by.css('h3')).getText()).toContain('1')
 
             bracketsPage.clickCompleteRoundButton()

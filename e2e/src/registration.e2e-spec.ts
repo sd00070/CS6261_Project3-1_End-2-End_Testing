@@ -12,8 +12,6 @@ describe('registration page', () => {
             registrationPage = new RegistrationPage()
 
             registrationPage.navigateTo()
-
-            registrationPage.clickRegistrationLink()
         })
 
         it('registers 2 players & displays them in a message', () => {
@@ -49,8 +47,6 @@ describe('registration page', () => {
             registrationPage = new RegistrationPage()
 
             registrationPage.navigateTo()
-
-            registrationPage.clickRegistrationLink()
         })
 
         it('displays 2 players in the text input fields', () => {
