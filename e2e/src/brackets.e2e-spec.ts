@@ -319,8 +319,30 @@ describe('brackets page', () => {
             expect(getChampionText()).toContain('John')
         })
 
-        xit('walks through a full 8-player tournament', () => {
+        it('walks through a full 8-player tournament', () => {
+            navigateToRegistration()
 
+            register8Players()
+
+            clickBracketsLink()
+
+            element(by.id('match1-player1')).click()
+            element(by.id('match2-player1')).click()
+            element(by.id('match3-player1')).click()
+            element(by.id('match4-player1')).click()
+
+            clickCompleteRoundButton()
+
+            element(by.id('match1-player1')).click()
+            element(by.id('match2-player1')).click()
+
+            clickCompleteRoundButton()
+
+            element(by.id('match1-player2')).click()
+
+            clickCompleteRoundButton()
+
+            expect(getChampionText()).toContain('Chewy')
         })
 
         xit('walks through multiple tournaments', () => {
