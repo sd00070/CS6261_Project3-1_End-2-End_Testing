@@ -1,15 +1,20 @@
-import { by, element } from "protractor";
-import { RegistrationPage } from "./registration.po";
+import { by, element } from "protractor"
+import { AppPage } from "./app.po"
+import { RegistrationPage } from "./registration.po"
+export class BracketsPage extends AppPage {
 
-export class BracketsPage extends RegistrationPage {
+    private registrationPage: RegistrationPage
+
+    constructor() {
+        super()
+
+        this.registrationPage = new RegistrationPage()
+    }
+
     navigateTo() {
         super.navigateTo()
 
         return super.clickBracketsLink()
-    }
-
-    clickCompleteRoundButton() {
-        element(by.id('complete-round-button')).click()
     }
 
     get numberOfMatches() {
@@ -20,47 +25,51 @@ export class BracketsPage extends RegistrationPage {
         return element(by.css('h4')).getText()
     }
 
+    clickCompleteRoundButton() {
+        element(by.id('complete-round-button')).click()
+    }
+
     registerPlayers(...players: string[]) {
-        this.clickRegistrationLink()
+        super.clickRegistrationLink()
 
         /*
          * I would love to use the spread operator, but this
          * version of typescript doesn't seem to have it...
          */
-        this.fillContestantTextInputsWith.apply(this, players)
+        this.registrationPage.fillContestantTextInputsWith.apply(this.registrationPage, players)
 
-        this.clickRegisterButton()
+        this.registrationPage.clickRegisterButton()
 
-        this.clickBracketsLink()
+        super.clickBracketsLink()
     }
 
     register2Players() {
-        this.clickRegistrationLink()
+        super.clickRegistrationLink()
 
-        this.clickAutoFill2PlayersButton()
+        this.registrationPage.clickAutoFill2PlayersButton()
 
-        this.clickRegisterButton()
+        this.registrationPage.clickRegisterButton()
 
-        this.clickBracketsLink()
+        super.clickBracketsLink()
     }
 
     register4Players() {
-        this.clickRegistrationLink()
+        super.clickRegistrationLink()
 
-        this.clickAutoFill4PlayersButton()
+        this.registrationPage.clickAutoFill4PlayersButton()
 
-        this.clickRegisterButton()
+        this.registrationPage.clickRegisterButton()
 
-        this.clickBracketsLink()
+        super.clickBracketsLink()
     }
 
     register8Players() {
-        this.clickRegistrationLink()
+        super.clickRegistrationLink()
 
-        this.clickAutoFill8PlayersButton()
+        this.registrationPage.clickAutoFill8PlayersButton()
 
-        this.clickRegisterButton()
+        this.registrationPage.clickRegisterButton()
 
-        this.clickBracketsLink()
+        super.clickBracketsLink()
     }
 }
