@@ -1,4 +1,6 @@
+import { expectContestantTextInputValuesToEqual, register4Players } from "../util/registration"
 import { browser, by, element } from "protractor"
+import { clickBracketsLink, clickRegistrationLink } from "../util/navigation"
 
 describe('Routing', () => {
 
@@ -50,7 +52,13 @@ describe('Routing', () => {
 
     })
 
-    xit('clears the text inputs when returning to registration page', () => {
+    it('clears the text inputs when returning to registration page', () => {
+        register4Players()
 
+        clickBracketsLink()
+
+        clickRegistrationLink()
+
+        expectContestantTextInputValuesToEqual(['', '', '', '', '', '', '', ''])
     })
 })

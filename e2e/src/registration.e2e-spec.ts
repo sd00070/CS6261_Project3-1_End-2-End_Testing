@@ -1,6 +1,7 @@
-import { by, element, promise } from "protractor"
+import { expectContestantTextInputValuesToEqual } from "../util/registration"
+import { by, element } from "protractor"
 import { getMessageText } from "../util/elements"
-import { clickRegisterButton, fillContestantTextInputsWith, getContestantTextInputValues } from "../util/form-interaction"
+import { clickRegisterButton, fillContestantTextInputsWith } from "../util/form-interaction"
 import { navigateToRegistration } from "../util/navigation"
 
 describe('brackets page', () => {
@@ -36,9 +37,6 @@ describe('brackets page', () => {
     })
 
     describe('autofill buttons', () => {
-
-        const expectContestantTextInputValuesToEqual = (expectedValues: string[]): promise.Promise<void> =>
-            getContestantTextInputValues().then(values => expect(values).toEqual(expectedValues))
 
         beforeEach(() => {
             navigateToRegistration()
