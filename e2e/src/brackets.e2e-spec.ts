@@ -190,8 +190,29 @@ describe('brackets page', () => {
             expect(element(by.css('h4')).getText()).toContain('Zoe')
         })
 
-        xit('removes complete round button when winner declared', () => {
+        it('removes complete round button when winner declared', () => {
+            navigateToRegistration()
 
+            register2Players()
+
+            clickBracketsLink()
+
+            element(by.id('match1-player1')).click()
+
+            expect(element(by.id('complete-round-button'))).toBeTruthy()
+
+            clickCompleteRoundButton()
+
+            /*
+             * I needed to grab an array rather than just the single button
+             * as protractor throws an error if the element does not exist
+             * and the single element version is called. It is more than happy
+             * to, on the other hand, return an array of length zero in the
+             * array-returning method.
+             */
+            const completeRoundButtonAgain = element.all(by.id('complete-round-button'))
+
+            expect(completeRoundButtonAgain.count()).toBe(0)
         })
 
         it('displays a new round of 1 match when winners for 2 matches (4 players) are submitted', () => {
