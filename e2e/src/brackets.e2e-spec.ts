@@ -1,6 +1,7 @@
+import { clickRegisterButton } from "../util/registration"
 import { by, element } from "protractor"
 import { getMessageText } from "../util/elements"
-import { fillContestantTextInputsWith, clickRegisterButton } from "../util/form-interaction"
+import { fillContestantTextInputsWith } from "../util/form-interaction"
 import { clickBracketsLink, navigateToRegistration } from "../util/navigation"
 
 describe('brackets page', () => {

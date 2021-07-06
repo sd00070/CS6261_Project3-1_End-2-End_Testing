@@ -1,9 +1,13 @@
 import { by, element, promise } from "protractor"
-import { clickRegisterButton, getContestantTextInputValues } from "./form-interaction"
+import { getContestantTextInputValues } from "./form-interaction"
 import { navigateToRegistration } from "./navigation"
 
 export const clickAutoFill4PlayersButton = () => {
     element(by.id('autofill-4-players-button')).click()
+}
+
+export const clickRegisterButton = () => {
+    element(by.id('register-contestants-button')).click()
 }
 
 export const register4Players = () => {

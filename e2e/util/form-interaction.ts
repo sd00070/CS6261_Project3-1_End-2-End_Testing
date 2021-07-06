@@ -11,5 +11,3 @@ export const fillContestantTextInputsWith = (...inputs: string[]): void => {
 
 export const getContestantTextInputValues = (): promise.Promise<string[]> =>
     getContestantTextInputs().map(element => element.getAttribute('value'))
-
-export const clickRegisterButton = () => element(by.id('register-contestants-button')).click()
