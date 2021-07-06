@@ -1,7 +1,6 @@
-import { clickRegisterButton, register2Players, register4Players, register8Players } from "../util/registration"
+import { clickRegisterButton, fillContestantTextInputsWith, register2Players, register4Players, register8Players } from "../util/registration"
 import { browser, by, element } from "protractor"
 import { getMessageText } from "../util/elements"
-import { fillContestantTextInputsWith } from "../util/form-interaction"
 import { clickBracketsLink, clickRegistrationLink, navigateToRegistration } from "../util/navigation"
 import { clickCompleteRoundButton, expectPlayerLabelTextsToContain, expectPlayerRadioButtonValuesToEqual, getChampionText, getNumberOfMatches } from "../util/brackets"
 

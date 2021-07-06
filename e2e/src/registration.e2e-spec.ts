@@ -1,7 +1,6 @@
-import { clickRegisterButton, expectContestantTextInputValuesToEqual } from "../util/registration"
+import { clickRegisterButton, expectContestantTextInputValuesToEqual, fillContestantTextInputsWith } from "../util/registration"
 import { by, element } from "protractor"
 import { getMessageText } from "../util/elements"
-import { fillContestantTextInputsWith } from "../util/form-interaction"
 import { navigateToRegistration } from "../util/navigation"
 
 describe('registration page', () => {
