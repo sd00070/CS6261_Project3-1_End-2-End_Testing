@@ -3,7 +3,7 @@ import { browser, by, element } from "protractor"
 import { getMessageText } from "../util/elements"
 import { fillContestantTextInputsWith } from "../util/form-interaction"
 import { clickBracketsLink, navigateToRegistration } from "../util/navigation"
-import { clickCompleteRoundButton } from "../util/brackets"
+import { clickCompleteRoundButton, getNumberOfMatches } from "../util/brackets"
 
 describe('brackets page', () => {
     describe('matches', () => {
@@ -19,9 +19,7 @@ describe('brackets page', () => {
 
             clickBracketsLink()
 
-            const matches = element.all(by.className('match-heading'))
-
-            expect(matches.count()).toBe(1)
+            expect(getNumberOfMatches()).toBe(1)
         })
 
         it('displays 2 matches on the brackets page after registering 4 players', () => {
@@ -31,9 +29,7 @@ describe('brackets page', () => {
 
             clickBracketsLink()
 
-            const matches = element.all(by.className('match-heading'))
-
-            expect(matches.count()).toBe(2)
+            expect(getNumberOfMatches()).toBe(2)
         })
 
         it('displays 4 matches on the brackets page after registering 8 players', () => {
@@ -43,9 +39,7 @@ describe('brackets page', () => {
 
             clickBracketsLink()
 
-            const matches = element.all(by.className('match-heading'))
-
-            expect(matches.count()).toBe(4)
+            expect(getNumberOfMatches()).toBe(4)
         })
 
         it('attaches the 2 registered players to the radio button values in the brackets', () => {
