@@ -4,7 +4,7 @@ import { getMessageText } from "../util/elements"
 import { fillContestantTextInputsWith } from "../util/form-interaction"
 import { navigateToRegistration } from "../util/navigation"
 
-describe('brackets page', () => {
+describe('registration page', () => {
     describe('register contestants button', () => {
 
         beforeEach(() => {
