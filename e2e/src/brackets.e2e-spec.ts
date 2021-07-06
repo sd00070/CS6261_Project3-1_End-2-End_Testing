@@ -263,8 +263,24 @@ describe('brackets page', () => {
             expect(getNumberOfMatches()).toBe(2)
         })
 
-        xit('displays the winners from the previous rounds in the new rounds (8 players initially)', () => {
+        it('displays the winners from the previous rounds in the new rounds (8 players initially)', () => {
+            navigateToRegistration()
 
+            register8Players()
+
+            clickBracketsLink()
+
+            element(by.id('match1-player1')).click()
+            element(by.id('match2-player1')).click()
+            element(by.id('match3-player1')).click()
+            element(by.id('match4-player1')).click()
+
+            element(by.id('complete-round-button')).click()
+
+            expect(element(by.id('match1-player1')).getAttribute('value')).toEqual('Leia')
+            expect(element(by.id('match1-player2')).getAttribute('value')).toEqual('Lando')
+            expect(element(by.id('match2-player1')).getAttribute('value')).toEqual('Chewy')
+            expect(element(by.id('match2-player2')).getAttribute('value')).toEqual('C3P0')
         })
 
         xit('increments the counter when progressing to another round', () => {
