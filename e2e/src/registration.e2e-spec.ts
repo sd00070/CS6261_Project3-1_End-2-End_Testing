@@ -1,13 +1,19 @@
 import { clickRegisterButton, expectContestantTextInputValuesToEqual, fillContestantTextInputsWith } from "../util/registration"
 import { by, element } from "protractor"
-import { getMessageText } from "../util/elements"
-import { navigateToRegistration } from "../util/navigation"
+import { clickRegistrationLink, navigateToRegistration } from "../util/navigation"
+import { AppPage } from "./app.po"
 
 describe('registration page', () => {
     describe('register contestants button', () => {
 
+        let appPage: AppPage
+
         beforeEach(() => {
-            navigateToRegistration()
+            appPage = new AppPage()
+
+            appPage.navigateTo()
+
+            clickRegistrationLink()
         })
 
         it('registers 2 players & displays them in a message', () => {
@@ -15,7 +21,7 @@ describe('registration page', () => {
 
             clickRegisterButton()
 
-            expect(getMessageText()).toContain('Yogi,Booboo')
+            expect(appPage.messageText).toContain('Yogi,Booboo')
         })
 
         it('registers 4 players & displays them in a message', () => {
@@ -23,7 +29,7 @@ describe('registration page', () => {
 
             clickRegisterButton()
 
-            expect(getMessageText()).toContain('Mario,Luigi,Peach,Toad')
+            expect(appPage.messageText).toContain('Mario,Luigi,Peach,Toad')
         })
 
         it('registers 8 players & displays them in a message', () => {
@@ -31,14 +37,20 @@ describe('registration page', () => {
 
             clickRegisterButton()
 
-            expect(getMessageText()).toContain('Frodo,Sam,Aragorn,Boromir,Legalos,Gimli,Merry,Pippin')
+            expect(appPage.messageText).toContain('Frodo,Sam,Aragorn,Boromir,Legalos,Gimli,Merry,Pippin')
         })
     })
 
     describe('autofill buttons', () => {
 
+        let appPage: AppPage
+
         beforeEach(() => {
-            navigateToRegistration()
+            appPage = new AppPage()
+
+            appPage.navigateTo()
+
+            clickRegistrationLink()
         })
 
         it('displays 2 players in the text input fields', () => {
@@ -72,14 +84,20 @@ describe('registration page', () => {
 
         const contestantNumberError = 'Should be 2, 4, or 8 contestants'
 
+        let appPage: AppPage
+
         beforeEach(() => {
-            navigateToRegistration()
+            appPage = new AppPage()
+
+            appPage.navigateTo()
+
+            clickRegistrationLink()
         })
 
         it('displays error when no contestants filled on submit', () => {
             clickRegisterButton()
 
-            expect(getMessageText()).toContain(contestantNumberError)
+            expect(appPage.messageText).toContain(contestantNumberError)
         })
 
         it('displays an error when 1 player is submitted', () => {
@@ -87,7 +105,7 @@ describe('registration page', () => {
 
             clickRegisterButton()
 
-            expect(getMessageText()).toContain('Should be 2, 4, or 8 contestants')
+            expect(appPage.messageText).toContain('Should be 2, 4, or 8 contestants')
         })
 
         it('displays an error when 3 players are submitted', () => {
@@ -95,7 +113,7 @@ describe('registration page', () => {
 
             clickRegisterButton()
 
-            expect(getMessageText()).toContain(contestantNumberError)
+            expect(appPage.messageText).toContain(contestantNumberError)
         })
 
         it('displays an error when 5 players are submitted', () => {
@@ -103,7 +121,7 @@ describe('registration page', () => {
 
             clickRegisterButton()
 
-            expect(getMessageText()).toContain(contestantNumberError)
+            expect(appPage.messageText).toContain(contestantNumberError)
         })
 
         it('displays an error when 6 players are submitted', () => {
@@ -111,7 +129,7 @@ describe('registration page', () => {
 
             clickRegisterButton()
 
-            expect(getMessageText()).toContain(contestantNumberError)
+            expect(appPage.messageText).toContain(contestantNumberError)
         })
 
         it('displays an error when 7 players are submitted', () => {
@@ -119,7 +137,7 @@ describe('registration page', () => {
 
             clickRegisterButton()
 
-            expect(getMessageText()).toContain(contestantNumberError)
+            expect(appPage.messageText).toContain(contestantNumberError)
         })
 
         it('displays an error when given duplicate names', () => {
@@ -127,7 +145,7 @@ describe('registration page', () => {
 
             clickRegisterButton()
 
-            expect(getMessageText()).toContain('Duplicate player')
+            expect(appPage.messageText).toContain('Duplicate player')
         })
     })
 })

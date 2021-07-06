@@ -1,8 +1,8 @@
 import { clickRegisterButton, fillContestantTextInputsWith, register2Players, register4Players, register8Players } from "../util/registration"
 import { browser, by, element } from "protractor"
-import { getMessageText } from "../util/elements"
 import { clickBracketsLink, clickRegistrationLink, navigateToRegistration } from "../util/navigation"
 import { clickCompleteRoundButton, expectPlayerLabelTextsToContain, expectPlayerRadioButtonValuesToEqual, getChampionText, getNumberOfMatches } from "../util/brackets"
+import { AppPage } from "./app.po"
 
 describe('brackets page', () => {
     describe('matches', () => {
@@ -320,8 +320,14 @@ describe('brackets page', () => {
 
     describe('errors', () => {
 
+        let appPage: AppPage
+
         beforeEach(() => {
-            navigateToRegistration()
+            appPage = new AppPage()
+
+            appPage.navigateTo()
+
+            clickRegistrationLink()
 
             register4Players()
 
@@ -331,7 +337,7 @@ describe('brackets page', () => {
         it('displays an error if no winners are selected on submission', () => {
             clickCompleteRoundButton()
 
-            expect(getMessageText()).toContain('Please complete all matches')
+            expect(appPage.messageText).toContain('Please complete all matches')
         })
 
         it('displays an error if any match is missing a selected winner', () => {
@@ -339,7 +345,7 @@ describe('brackets page', () => {
 
             clickCompleteRoundButton()
 
-            expect(getMessageText()).toContain('Please complete all matches')
+            expect(appPage.messageText).toContain('Please complete all matches')
         })
 
         it('does not increment the counter on error', () => {

@@ -12,4 +12,8 @@ export class AppPage {
   get subpageTitleText() {
     return element(by.id('subpageTitle')).getText()
   }
+
+  get messageText() {
+    return element(by.id('message')).getText()
+  }
 }
