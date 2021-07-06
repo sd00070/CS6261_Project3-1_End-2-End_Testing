@@ -1,7 +1,7 @@
-import { register4Players } from "../util/registration"
 import { by, element } from "protractor"
 import { AppPage } from "./app.po"
 import { expectContestantTextInputValuesToEqual, expectPlayerRadioButtonValuesToEqual } from "../util/assertions"
+import { RegistrationPage } from "./registration.po"
 
 describe('Routing', () => {
 
@@ -42,7 +42,7 @@ describe('Routing', () => {
     it('clears the text inputs when returning to registration page', () => {
         appPage.clickRegistrationLink()
 
-        register4Players()
+        new RegistrationPage().register4Players()
 
         appPage.clickBracketsLink()
 
@@ -54,7 +54,7 @@ describe('Routing', () => {
     it('remembers registered players when navigating from and to brackets page (staying on site)', () => {
         appPage.clickRegistrationLink()
 
-        register4Players()
+        new RegistrationPage().register4Players()
 
         appPage.clickBracketsLink()
 

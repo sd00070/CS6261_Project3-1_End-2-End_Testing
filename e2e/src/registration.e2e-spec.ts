@@ -1,56 +1,56 @@
-import { clickRegisterButton, fillContestantTextInputsWith } from "../util/registration"
 import { by, element } from "protractor"
 import { AppPage } from "./app.po"
 import { expectContestantTextInputValuesToEqual } from "../util/assertions"
+import { RegistrationPage } from "./registration.po"
 
 describe('registration page', () => {
     describe('register contestants button', () => {
 
-        let appPage: AppPage
+        let registrationPage: RegistrationPage
 
         beforeEach(() => {
-            appPage = new AppPage()
+            registrationPage = new RegistrationPage()
 
-            appPage.navigateTo()
+            registrationPage.navigateTo()
 
-            appPage.clickRegistrationLink()
+            registrationPage.clickRegistrationLink()
         })
 
         it('registers 2 players & displays them in a message', () => {
-            fillContestantTextInputsWith('Yogi', 'Booboo')
+            registrationPage.fillContestantTextInputsWith('Yogi', 'Booboo')
 
-            clickRegisterButton()
+            registrationPage.clickRegisterButton()
 
-            expect(appPage.messageText).toContain('Yogi,Booboo')
+            expect(registrationPage.messageText).toContain('Yogi,Booboo')
         })
 
         it('registers 4 players & displays them in a message', () => {
-            fillContestantTextInputsWith('Mario', 'Luigi', 'Peach', 'Toad')
+            registrationPage.fillContestantTextInputsWith('Mario', 'Luigi', 'Peach', 'Toad')
 
-            clickRegisterButton()
+            registrationPage.clickRegisterButton()
 
-            expect(appPage.messageText).toContain('Mario,Luigi,Peach,Toad')
+            expect(registrationPage.messageText).toContain('Mario,Luigi,Peach,Toad')
         })
 
         it('registers 8 players & displays them in a message', () => {
-            fillContestantTextInputsWith('Frodo', 'Sam', 'Aragorn', 'Boromir', 'Legalos', 'Gimli', 'Merry', 'Pippin')
+            registrationPage.fillContestantTextInputsWith('Frodo', 'Sam', 'Aragorn', 'Boromir', 'Legalos', 'Gimli', 'Merry', 'Pippin')
 
-            clickRegisterButton()
+            registrationPage.clickRegisterButton()
 
-            expect(appPage.messageText).toContain('Frodo,Sam,Aragorn,Boromir,Legalos,Gimli,Merry,Pippin')
+            expect(registrationPage.messageText).toContain('Frodo,Sam,Aragorn,Boromir,Legalos,Gimli,Merry,Pippin')
         })
     })
 
     describe('autofill buttons', () => {
 
-        let appPage: AppPage
+        let registrationPage: RegistrationPage
 
         beforeEach(() => {
-            appPage = new AppPage()
+            registrationPage = new RegistrationPage()
 
-            appPage.navigateTo()
+            registrationPage.navigateTo()
 
-            appPage.clickRegistrationLink()
+            registrationPage.clickRegistrationLink()
         })
 
         it('displays 2 players in the text input fields', () => {
@@ -72,7 +72,7 @@ describe('registration page', () => {
         })
 
         it('clears any extra already-filled cells', () => {
-            fillContestantTextInputsWith('Woody', 'Bo Peep', 'Buzz', 'Jessie', 'Bullseye', 'Slinky', 'Mr. Potato Head', 'Rex')
+            registrationPage.fillContestantTextInputsWith('Woody', 'Bo Peep', 'Buzz', 'Jessie', 'Bullseye', 'Slinky', 'Mr. Potato Head', 'Rex')
 
             element(by.id('autofill-2-players-button')).click()
 
@@ -84,68 +84,66 @@ describe('registration page', () => {
 
         const contestantNumberError = 'Should be 2, 4, or 8 contestants'
 
-        let appPage: AppPage
+        let registrationPage: RegistrationPage
 
         beforeEach(() => {
-            appPage = new AppPage()
+            registrationPage = new RegistrationPage()
 
-            appPage.navigateTo()
-
-            appPage.clickRegistrationLink()
+            registrationPage.navigateTo()
         })
 
         it('displays error when no contestants filled on submit', () => {
-            clickRegisterButton()
+            registrationPage.clickRegisterButton()
 
-            expect(appPage.messageText).toContain(contestantNumberError)
+            expect(registrationPage.messageText).toContain(contestantNumberError)
         })
 
         it('displays an error when 1 player is submitted', () => {
-            fillContestantTextInputsWith('Samurai Jack')
+            registrationPage.fillContestantTextInputsWith('Samurai Jack')
 
-            clickRegisterButton()
+            registrationPage.clickRegisterButton()
 
-            expect(appPage.messageText).toContain('Should be 2, 4, or 8 contestants')
+            expect(registrationPage.messageText).toContain('Should be 2, 4, or 8 contestants')
         })
 
         it('displays an error when 3 players are submitted', () => {
-            fillContestantTextInputsWith('Ed', 'Edd', 'Eddy')
+            registrationPage.fillContestantTextInputsWith('Ed', 'Edd', 'Eddy')
 
-            clickRegisterButton()
+            registrationPage.clickRegisterButton()
 
-            expect(appPage.messageText).toContain(contestantNumberError)
+            expect(registrationPage.messageText).toContain(contestantNumberError)
         })
 
         it('displays an error when 5 players are submitted', () => {
-            fillContestantTextInputsWith('Beast Boy', 'Cyborg', 'Raven', 'Robin', 'Starfire')
+            registrationPage.fillContestantTextInputsWith('Beast Boy', 'Cyborg', 'Raven', 'Robin', 'Starfire')
 
-            clickRegisterButton()
+            registrationPage.clickRegisterButton()
 
-            expect(appPage.messageText).toContain(contestantNumberError)
+            expect(registrationPage.messageText).toContain(contestantNumberError)
         })
 
         it('displays an error when 6 players are submitted', () => {
-            fillContestantTextInputsWith('Ulrich', 'Yumi', 'Jeremie', 'Odd', 'Aelita', 'William')
+            registrationPage.fillContestantTextInputsWith('Ulrich', 'Yumi', 'Jeremie', 'Odd', 'Aelita', 'William')
 
-            clickRegisterButton()
+            registrationPage.clickRegisterButton()
 
-            expect(appPage.messageText).toContain(contestantNumberError)
+            expect(registrationPage.messageText).toContain(contestantNumberError)
         })
 
         it('displays an error when 7 players are submitted', () => {
-            fillContestantTextInputsWith('SpongeBob', 'Patrick', 'Squidward', 'Mr. Krabs', 'Plankton', 'Gary', 'Sandy')
+            registrationPage.fillContestantTextInputsWith('SpongeBob', 'Patrick', 'Squidward', 'Mr. Krabs', 'Plankton', 'Gary', 'Sandy')
 
-            clickRegisterButton()
+            registrationPage.clickRegisterButton()
 
-            expect(appPage.messageText).toContain(contestantNumberError)
+            expect(registrationPage.messageText).toContain(contestantNumberError)
         })
 
         it('displays an error when given duplicate names', () => {
-            fillContestantTextInputsWith('Daryl', 'Daryl')
+            registrationPage.fillContestantTextInputsWith('Daryl', 'Daryl')
 
-            clickRegisterButton()
+            registrationPage.clickRegisterButton()
 
-            expect(appPage.messageText).toContain('Duplicate player')
+            expect(registrationPage.messageText).toContain('Duplicate player')
         })
     })
 })
