@@ -35,10 +35,6 @@ describe('Routing', () => {
         expect(getSubpageTitleText()).toContain("Brackets App")
     })
 
-    xit('remembers registered players when navigating from and to brackets page (staying on site)', () => {
-
-    })
-
     it('clears the text inputs when returning to registration page', () => {
         register4Players()
 
@@ -47,5 +43,30 @@ describe('Routing', () => {
         clickRegistrationLink()
 
         expectContestantTextInputValuesToEqual(['', '', '', '', '', '', '', ''])
+    })
+
+    it('remembers registered players when navigating from and to brackets page (staying on site)', () => {
+        register4Players()
+
+        clickBracketsLink()
+
+        let player1 = element(by.id('match1-player1'))
+        let player2 = element(by.id('match1-player2'))
+        let player3 = element(by.id('match2-player1'))
+        let player4 = element(by.id('match2-player2'))
+
+        clickRegistrationLink()
+
+        clickBracketsLink()
+
+        player1 = element(by.id('match1-player1'))
+        player2 = element(by.id('match1-player2'))
+        player3 = element(by.id('match2-player1'))
+        player4 = element(by.id('match2-player2'))
+
+        expect(player1.getAttribute('value')).toEqual('John')
+        expect(player2.getAttribute('value')).toEqual('Paul')
+        expect(player3.getAttribute('value')).toEqual('George')
+        expect(player4.getAttribute('value')).toEqual('Ringo')
     })
 })
