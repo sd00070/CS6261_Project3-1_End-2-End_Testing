@@ -140,6 +140,18 @@ describe('registration button', () => {
         expect(player8.getAttribute('value')).toEqual('Horace')
     })
 
+    xit('display 2 players in the radio button labels', () => {
+
+    })
+
+    xit('display 4 players in the radio button labels', () => {
+
+    })
+
+    xit('display 8 players in the radio button labels', () => {
+
+    })
+
     xit('clears the text inputs when returning to registration page', () => {
 
     })
