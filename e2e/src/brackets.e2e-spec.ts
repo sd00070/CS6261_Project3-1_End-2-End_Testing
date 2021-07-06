@@ -314,8 +314,19 @@ describe('brackets page', () => {
     })
 
     describe('errors', () => {
-        xit('displays an error if no winners are selected on submission', () => {
 
+        beforeEach(() => {
+            navigateToRegistration()
+
+            register4Players()
+
+            clickBracketsLink()
+        })
+
+        it('displays an error if no winners are selected on submission', () => {
+            clickCompleteRoundButton()
+
+            expect(getMessageText()).toContain('Please complete all matches')
         })
 
         xit('displays an error if any match is missing a selected winner', () => {
@@ -323,12 +334,6 @@ describe('brackets page', () => {
         })
 
         it('does not increment the counter on error', () => {
-            navigateToRegistration()
-
-            register4Players()
-
-            clickBracketsLink()
-
             element(by.id('match1-player1')).click()
 
             expect(element(by.css('h3')).getText()).toContain('1')
