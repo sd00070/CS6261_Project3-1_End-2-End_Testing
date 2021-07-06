@@ -283,8 +283,21 @@ describe('brackets page', () => {
             expect(element(by.id('match2-player2')).getAttribute('value')).toEqual('C3P0')
         })
 
-        xit('increments the counter when progressing to another round', () => {
+        it('increments the counter when progressing to another round', () => {
+            navigateToRegistration()
 
+            register4Players()
+
+            clickBracketsLink()
+
+            element(by.id('match1-player1')).click()
+            element(by.id('match2-player1')).click()
+
+            expect(element(by.css('h3')).getText()).toContain('1')
+
+            element(by.id('complete-round-button')).click()
+
+            expect(element(by.css('h3')).getText()).toContain('2')
         })
 
         xit('walks through a full 4-player tournament', () => {
