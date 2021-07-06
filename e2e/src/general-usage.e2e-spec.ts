@@ -140,8 +140,20 @@ describe('registration button', () => {
         expect(player8.getAttribute('value')).toEqual('Horace')
     })
 
-    xit('display 2 players in the radio button labels', () => {
+    it('display 2 players in the radio button labels', () => {
+        navigateToRegistration()
 
+        element(by.id('autofill-2-players-button')).click()
+
+        clickRegisterButton()
+
+        element(by.id('brackets-link')).click()
+
+        const player1Label = element(by.id('match1-player1-label'))
+        const player2Label = element(by.id('match1-player2-label'))
+
+        expect(player1Label.getText()).toEqual('Zoe')
+        expect(player2Label.getText()).toEqual('Kaylee')
     })
 
     xit('display 4 players in the radio button labels', () => {
