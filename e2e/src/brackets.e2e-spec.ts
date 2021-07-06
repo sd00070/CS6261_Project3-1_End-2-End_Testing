@@ -322,8 +322,20 @@ describe('brackets page', () => {
 
         })
 
-        xit('does not increment the counter on error', () => {
+        it('does not increment the counter on error', () => {
+            navigateToRegistration()
 
+            register4Players()
+
+            clickBracketsLink()
+
+            element(by.id('match1-player1')).click()
+
+            expect(element(by.css('h3')).getText()).toContain('1')
+
+            element(by.id('complete-round-button')).click()
+
+            expect(element(by.css('h3')).getText()).toContain('1')
         })
     })
 })
