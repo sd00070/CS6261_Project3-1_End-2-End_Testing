@@ -25,8 +25,20 @@ export class BracketsPage extends AppPage {
         return element(by.css('h4')).getText()
     }
 
+    public get roundHeadingText() {
+        return element(by.css('h3')).getText()
+    }
+
+    public async hasCompleteRoundButton() {
+        return await element.all(by.id('complete-round-button')).count() > 0
+    }
+
     public clickAllPlayer1s() {
         element.all(by.className('player1')).each(player => player.click())
+    }
+
+    public clickAllPlayer2s() {
+        element.all(by.className('player2')).each(player => player.click())
     }
 
     public clickCompleteRoundButton() {

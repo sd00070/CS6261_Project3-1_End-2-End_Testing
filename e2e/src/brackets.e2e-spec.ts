@@ -79,15 +79,15 @@ describe('brackets page', () => {
         })
 
         it('increments round counter when clicking `complete round` button while brackets are empty', () => {
-            expect(element(by.css('h3')).getText()).toContain('1')
+            expect(bracketsPage.roundHeadingText).toContain('1')
 
             bracketsPage.clickCompleteRoundButton()
 
-            expect(element(by.css('h3')).getText()).toContain('2')
+            expect(bracketsPage.roundHeadingText).toContain('2')
 
             bracketsPage.clickCompleteRoundButton()
 
-            expect(element(by.css('h3')).getText()).toContain('3')
+            expect(bracketsPage.roundHeadingText).toContain('3')
         })
 
         it('declares a winner when a match winner is selected with only one match (2 players)', () => {
@@ -97,7 +97,7 @@ describe('brackets page', () => {
 
             bracketsPage.clickCompleteRoundButton()
 
-            expect(element(by.css('h4')).getText()).toContain('Zoe')
+            expect(bracketsPage.championText).toContain('Zoe')
         })
 
         it('removes complete round button when winner declared', () => {
@@ -105,20 +105,11 @@ describe('brackets page', () => {
 
             bracketsPage.clickAllPlayer1s()
 
-            expect(element(by.id('complete-round-button'))).toBeTruthy()
+            expect(bracketsPage.hasCompleteRoundButton()).toBeTruthy()
 
             bracketsPage.clickCompleteRoundButton()
 
-            /*
-             * I needed to grab an array rather than just the single button
-             * as protractor throws an error if the element does not exist
-             * and the single element version is called. It is more than happy
-             * to, on the other hand, return an array of length zero in the
-             * array-returning method.
-             */
-            const completeRoundButtonAgain = element.all(by.id('complete-round-button'))
-
-            expect(completeRoundButtonAgain.count()).toBe(0)
+            expect(bracketsPage.hasCompleteRoundButton()).toBeFalsy()
         })
 
         it('displays a new round of 1 match when winners for 2 matches (4 players) are submitted', () => {
@@ -166,11 +157,11 @@ describe('brackets page', () => {
 
             bracketsPage.clickAllPlayer1s()
 
-            expect(element(by.css('h3')).getText()).toContain('1')
+            expect(bracketsPage.roundHeadingText).toContain('1')
 
             bracketsPage.clickCompleteRoundButton()
 
-            expect(element(by.css('h3')).getText()).toContain('2')
+            expect(bracketsPage.roundHeadingText).toContain('2')
         })
 
         it('walks through a full 4-player tournament', () => {
@@ -198,7 +189,7 @@ describe('brackets page', () => {
 
             bracketsPage.clickCompleteRoundButton()
 
-            element(by.id('match1-player2')).click()
+            bracketsPage.clickAllPlayer2s()
 
             bracketsPage.clickCompleteRoundButton()
 
@@ -257,13 +248,11 @@ describe('brackets page', () => {
         })
 
         it('does not increment the counter on error', () => {
-            element(by.id('match1-player1')).click()
-
-            expect(element(by.css('h3')).getText()).toContain('1')
+            expect(bracketsPage.roundHeadingText).toContain('1')
 
             bracketsPage.clickCompleteRoundButton()
 
-            expect(element(by.css('h3')).getText()).toContain('1')
+            expect(bracketsPage.roundHeadingText).toContain('1')
         })
     })
 })
