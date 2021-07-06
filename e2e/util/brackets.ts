@@ -6,3 +6,6 @@ export const clickCompleteRoundButton = () => {
 
 export const getNumberOfMatches = () =>
     element.all(by.className('match-heading')).count()
+
+export const getChampionText = () =>
+    element(by.css('h4')).getText()

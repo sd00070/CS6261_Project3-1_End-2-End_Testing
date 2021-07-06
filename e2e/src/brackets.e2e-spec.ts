@@ -3,7 +3,7 @@ import { browser, by, element } from "protractor"
 import { getMessageText } from "../util/elements"
 import { fillContestantTextInputsWith } from "../util/form-interaction"
 import { clickBracketsLink, navigateToRegistration } from "../util/navigation"
-import { clickCompleteRoundButton, getNumberOfMatches } from "../util/brackets"
+import { clickCompleteRoundButton, getChampionText, getNumberOfMatches } from "../util/brackets"
 
 describe('brackets page', () => {
     describe('matches', () => {
@@ -300,8 +300,23 @@ describe('brackets page', () => {
             expect(element(by.css('h3')).getText()).toContain('2')
         })
 
-        xit('walks through a full 4-player tournament', () => {
+        it('walks through a full 4-player tournament', () => {
+            navigateToRegistration()
 
+            register4Players()
+
+            clickBracketsLink()
+
+            element(by.id('match1-player1')).click()
+            element(by.id('match2-player1')).click()
+
+            clickCompleteRoundButton()
+
+            element(by.id('match1-player1')).click()
+
+            clickCompleteRoundButton()
+
+            expect(getChampionText()).toContain('John')
         })
 
         xit('walks through a full 8-player tournament', () => {
