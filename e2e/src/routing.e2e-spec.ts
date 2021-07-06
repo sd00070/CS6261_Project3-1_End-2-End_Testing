@@ -1,6 +1,7 @@
 import { expectContestantTextInputValuesToEqual, register4Players } from "../util/registration"
 import { browser, by, element } from "protractor"
 import { clickBracketsLink, clickRegistrationLink } from "../util/navigation"
+import { getSubpageTitleText } from "../util/elements"
 
 describe('Routing', () => {
 
@@ -9,9 +10,7 @@ describe('Routing', () => {
     })
 
     it('navigates to welcome page', () => {
-        const subpageTitle = element(by.id('subpageTitle'))
-
-        expect(subpageTitle.getText()).toContain("Brackets App")
+        expect(getSubpageTitleText()).toContain("Brackets App")
     })
 
     it('can navigate to the registration page', () => {
@@ -19,17 +18,13 @@ describe('Routing', () => {
 
         registrationLink.click()
 
-        const subpageTitle = element(by.id('subpageTitle'))
-
-        expect(subpageTitle.getText()).toContain("Register Players")
+        expect(getSubpageTitleText()).toContain("Register Players")
     })
 
     it('can navigate to the brackets page', () => {
         clickBracketsLink()
 
-        const subpageTitle = element(by.id('subpageTitle'))
-
-        expect(subpageTitle.getText()).toContain("Brackets")
+        expect(getSubpageTitleText()).toContain("Brackets")
     })
 
     it('can navigate to the welcome page from another page', () => {
@@ -37,9 +32,7 @@ describe('Routing', () => {
 
         element(by.id('welcome-link')).click()
 
-        const subpageTitle = element(by.id('subpageTitle'))
-
-        expect(subpageTitle.getText()).toContain("Brackets App")
+        expect(getSubpageTitleText()).toContain("Brackets App")
     })
 
     xit('remembers registered players when navigating from and to brackets page (staying on site)', () => {
