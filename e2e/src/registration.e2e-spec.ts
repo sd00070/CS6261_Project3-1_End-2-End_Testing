@@ -1,5 +1,3 @@
-import { by, element } from "protractor"
-import { AppPage } from "./app.po"
 import { expectContestantTextInputValuesToEqual } from "../util/assertions"
 import { RegistrationPage } from "./registration.po"
 
@@ -50,19 +48,19 @@ describe('registration page', () => {
         })
 
         it('displays 2 players in the text input fields', () => {
-            element(by.id('autofill-2-players-button')).click()
+            registrationPage.clickAutoFill2PlayersButton()
 
             expectContestantTextInputValuesToEqual('Zoe', 'Kaylee', '', '', '', '', '', '')
         })
 
         it('displays 4 players in the text input fields', () => {
-            element(by.id('autofill-4-players-button')).click()
+            registrationPage.clickAutoFill4PlayersButton()
 
             expectContestantTextInputValuesToEqual('John', 'Paul', 'George', 'Ringo', '', '', '', '')
         })
 
         it('displays 8 players in the text input fields', () => {
-            element(by.id('autofill-8-players-button')).click()
+            registrationPage.clickAutoFill8PlayersButton()
 
             expectContestantTextInputValuesToEqual('Leia', 'Luke', 'Lando', 'Han', 'Chewy', 'R2D2', 'C3P0', 'Vader')
         })
@@ -70,7 +68,9 @@ describe('registration page', () => {
         it('clears any extra already-filled cells', () => {
             registrationPage.fillContestantTextInputsWith('Woody', 'Bo Peep', 'Buzz', 'Jessie', 'Bullseye', 'Slinky', 'Mr. Potato Head', 'Rex')
 
-            element(by.id('autofill-2-players-button')).click()
+            registrationPage.clickRegisterButton()
+
+            registrationPage.clickAutoFill2PlayersButton()
 
             expectContestantTextInputValuesToEqual('Zoe', 'Kaylee', '', '', '', '', '', '')
         })
