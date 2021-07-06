@@ -1,6 +1,5 @@
 import { clickRegisterButton, fillContestantTextInputsWith } from "../util/registration"
 import { by, element } from "protractor"
-import { clickRegistrationLink } from "../util/navigation"
 import { AppPage } from "./app.po"
 import { expectContestantTextInputValuesToEqual } from "../util/assertions"
 
@@ -14,7 +13,7 @@ describe('registration page', () => {
 
             appPage.navigateTo()
 
-            clickRegistrationLink()
+            appPage.clickRegistrationLink()
         })
 
         it('registers 2 players & displays them in a message', () => {
@@ -51,7 +50,7 @@ describe('registration page', () => {
 
             appPage.navigateTo()
 
-            clickRegistrationLink()
+            appPage.clickRegistrationLink()
         })
 
         it('displays 2 players in the text input fields', () => {
@@ -92,7 +91,7 @@ describe('registration page', () => {
 
             appPage.navigateTo()
 
-            clickRegistrationLink()
+            appPage.clickRegistrationLink()
         })
 
         it('displays error when no contestants filled on submit', () => {

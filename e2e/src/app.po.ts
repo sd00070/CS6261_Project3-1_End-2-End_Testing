@@ -20,4 +20,8 @@ export class AppPage {
   clickBracketsLink() {
     return element(by.id('brackets-link')).click() as Promise<any>
   }
+
+  clickRegistrationLink() {
+    return element(by.id('registration-link')).click() as Promise<any>
+  }
 }

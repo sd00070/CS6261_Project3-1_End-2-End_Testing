@@ -1,5 +1,4 @@
 import { by, element, ElementArrayFinder, promise } from "protractor"
-import { navigateToRegistration } from "./navigation"
 
 export const clickAutoFill2PlayersButton = () => {
     element(by.id('autofill-2-players-button')).click()
@@ -24,8 +23,6 @@ export const register2Players = () => {
 }
 
 export const register4Players = () => {
-    navigateToRegistration()
-
     clickAutoFill4PlayersButton()
 
     clickRegisterButton()

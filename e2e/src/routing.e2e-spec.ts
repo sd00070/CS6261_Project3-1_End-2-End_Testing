@@ -1,6 +1,5 @@
 import { register4Players } from "../util/registration"
 import { by, element } from "protractor"
-import { clickBracketsLink, clickRegistrationLink } from "../util/navigation"
 import { AppPage } from "./app.po"
 import { expectContestantTextInputValuesToEqual, expectPlayerRadioButtonValuesToEqual } from "../util/assertions"
 
@@ -27,13 +26,13 @@ describe('Routing', () => {
     })
 
     it('can navigate to the brackets page', () => {
-        clickBracketsLink()
+        appPage.clickBracketsLink()
 
         expect(appPage.subpageTitleText).toContain("Brackets")
     })
 
     it('can navigate to the welcome page from another page', () => {
-        clickBracketsLink()
+        appPage.clickBracketsLink()
 
         element(by.id('welcome-link')).click()
 
@@ -41,25 +40,29 @@ describe('Routing', () => {
     })
 
     it('clears the text inputs when returning to registration page', () => {
+        appPage.clickRegistrationLink()
+
         register4Players()
 
-        clickBracketsLink()
+        appPage.clickBracketsLink()
 
-        clickRegistrationLink()
+        appPage.clickRegistrationLink()
 
         expectContestantTextInputValuesToEqual(['', '', '', '', '', '', '', ''])
     })
 
     it('remembers registered players when navigating from and to brackets page (staying on site)', () => {
+        appPage.clickRegistrationLink()
+
         register4Players()
 
-        clickBracketsLink()
+        appPage.clickBracketsLink()
 
         expectPlayerRadioButtonValuesToEqual('John', 'Paul', 'George', 'Ringo')
 
-        clickRegistrationLink()
+        appPage.clickRegistrationLink()
 
-        clickBracketsLink()
+        appPage.clickBracketsLink()
 
         expectPlayerRadioButtonValuesToEqual('John', 'Paul', 'George', 'Ringo')
     })
