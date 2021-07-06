@@ -1,4 +1,4 @@
-import { browser, by, element } from "protractor"
+import { by, element } from "protractor"
 import { expectPlayerLabelTextsToContain, expectPlayerRadioButtonValuesToEqual } from "../util/assertions"
 import { BracketsPage } from "./brackets.po"
 
@@ -93,7 +93,7 @@ describe('brackets page', () => {
         it('declares a winner when a match winner is selected with only one match (2 players)', () => {
             bracketsPage.register2Players()
 
-            element(by.id('match1-player1')).click()
+            bracketsPage.clickAllPlayer1s()
 
             bracketsPage.clickCompleteRoundButton()
 
@@ -103,7 +103,7 @@ describe('brackets page', () => {
         it('removes complete round button when winner declared', () => {
             bracketsPage.register2Players()
 
-            element(by.id('match1-player1')).click()
+            bracketsPage.clickAllPlayer1s()
 
             expect(element(by.id('complete-round-button'))).toBeTruthy()
 
@@ -124,8 +124,7 @@ describe('brackets page', () => {
         it('displays a new round of 1 match when winners for 2 matches (4 players) are submitted', () => {
             bracketsPage.register4Players()
 
-            element(by.id('match1-player1')).click()
-            element(by.id('match2-player1')).click()
+            bracketsPage.clickAllPlayer1s()
 
             bracketsPage.clickCompleteRoundButton()
 
@@ -135,8 +134,7 @@ describe('brackets page', () => {
         it('displays the winners from the previous rounds in the new round (4 players initially)', () => {
             bracketsPage.register4Players()
 
-            element(by.id('match1-player1')).click()
-            element(by.id('match2-player1')).click()
+            bracketsPage.clickAllPlayer1s()
 
             bracketsPage.clickCompleteRoundButton()
 
@@ -146,10 +144,7 @@ describe('brackets page', () => {
         it('displays a new round of 2 matches when winners of 4 matches (8 players) are submitted', () => {
             bracketsPage.register8Players()
 
-            element(by.id('match1-player1')).click()
-            element(by.id('match2-player1')).click()
-            element(by.id('match3-player1')).click()
-            element(by.id('match4-player1')).click()
+            bracketsPage.clickAllPlayer1s()
 
             bracketsPage.clickCompleteRoundButton()
 
@@ -159,10 +154,7 @@ describe('brackets page', () => {
         it('displays the winners from the previous rounds in the new rounds (8 players initially)', () => {
             bracketsPage.register8Players()
 
-            element(by.id('match1-player1')).click()
-            element(by.id('match2-player1')).click()
-            element(by.id('match3-player1')).click()
-            element(by.id('match4-player1')).click()
+            bracketsPage.clickAllPlayer1s()
 
             bracketsPage.clickCompleteRoundButton()
 
@@ -172,8 +164,7 @@ describe('brackets page', () => {
         it('increments the counter when progressing to another round', () => {
             bracketsPage.register4Players()
 
-            element(by.id('match1-player1')).click()
-            element(by.id('match2-player1')).click()
+            bracketsPage.clickAllPlayer1s()
 
             expect(element(by.css('h3')).getText()).toContain('1')
 
@@ -185,12 +176,11 @@ describe('brackets page', () => {
         it('walks through a full 4-player tournament', () => {
             bracketsPage.register4Players()
 
-            element(by.id('match1-player1')).click()
-            element(by.id('match2-player1')).click()
+            bracketsPage.clickAllPlayer1s()
 
             bracketsPage.clickCompleteRoundButton()
 
-            element(by.id('match1-player1')).click()
+            bracketsPage.clickAllPlayer1s()
 
             bracketsPage.clickCompleteRoundButton()
 
@@ -200,15 +190,11 @@ describe('brackets page', () => {
         it('walks through a full 8-player tournament', () => {
             bracketsPage.register8Players()
 
-            element(by.id('match1-player1')).click()
-            element(by.id('match2-player1')).click()
-            element(by.id('match3-player1')).click()
-            element(by.id('match4-player1')).click()
+            bracketsPage.clickAllPlayer1s()
 
             bracketsPage.clickCompleteRoundButton()
 
-            element(by.id('match1-player1')).click()
-            element(by.id('match2-player1')).click()
+            bracketsPage.clickAllPlayer1s()
 
             bracketsPage.clickCompleteRoundButton()
 
@@ -220,22 +206,23 @@ describe('brackets page', () => {
         })
 
         it('walks through multiple tournaments', () => {
+            // first tournament
             bracketsPage.register2Players()
 
-            element(by.id('match1-player1')).click()
+            bracketsPage.clickAllPlayer1s()
 
             bracketsPage.clickCompleteRoundButton()
 
             expect(bracketsPage.championText).toContain('Zoe')
 
+            // second tournament
             bracketsPage.register4Players()
 
-            element(by.id('match1-player1')).click()
-            element(by.id('match2-player1')).click()
+            bracketsPage.clickAllPlayer1s()
 
             bracketsPage.clickCompleteRoundButton()
 
-            element(by.id('match1-player1')).click()
+            bracketsPage.clickAllPlayer1s()
 
             bracketsPage.clickCompleteRoundButton()
 
