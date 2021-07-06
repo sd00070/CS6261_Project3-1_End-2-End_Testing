@@ -230,8 +230,20 @@ describe('brackets page', () => {
             expect(getNumberOfMatches()).toBe(1)
         })
 
-        xit('displays the winners from the previous rounds in the new round (4 players initially)', () => {
+        it('displays the winners from the previous rounds in the new round (4 players initially)', () => {
+            navigateToRegistration()
 
+            register4Players()
+
+            clickBracketsLink()
+
+            element(by.id('match1-player1')).click()
+            element(by.id('match2-player1')).click()
+
+            element(by.id('complete-round-button')).click()
+
+            expect(element(by.id('match1-player1')).getAttribute('value')).toEqual('John')
+            expect(element(by.id('match1-player2')).getAttribute('value')).toEqual('George')
         })
 
         xit('displays a new round of 2 matches when winners of 4 matches (8 players) are submitted', () => {
